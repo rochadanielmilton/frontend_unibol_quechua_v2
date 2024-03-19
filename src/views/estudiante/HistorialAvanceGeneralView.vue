@@ -495,8 +495,8 @@ export default {
         tableLineColor: [0, 0, 0], tableLineWidth: 0.2,
         styles: { fontSize: 6, halign: 'center' },
         bodyStyles: { lineWidth: 0.2, lineColor: [0, 0, 0] },
-        margin: { top: 105 }
-        //padding: 0                      
+        margin: { top: 105 },
+        padding: 2                      
       })
 
       finalY = doc.lastAutoTable.finalY
@@ -520,12 +520,13 @@ export default {
           1: { columnWidth: 'auto' }
         },
         tableWidth: doc.internal.pageSize.getWidth() / 3,
-        margin: { left: margin - 20, right: margin,top: 105 }
+        margin: { left: margin - 20, right: margin,top: 105 },
+        padding: 2           
         //columnStyles:{color}
 
       });
       finalY = doc.lastAutoTable.finalY
-      finalY += 30;
+      finalY += 10;
 
       doc.setTextColor(10);
       doc.setFontSize(6).setFont(undefined, 'bold');
