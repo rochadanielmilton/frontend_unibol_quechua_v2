@@ -1502,20 +1502,23 @@ export default {
     font-size: .875rem;
     line-height: 1.25rem;
 } */
-.smallone {
-  font-size: .875rem;
-  line-height: 1.25rem;
+table.dtr-inline.collapsed>tbody>tr>td.dtr-control,
+table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
 }
 
-.btn-custom {
-  background-color: #ff5733;
-  /* Cambia el color de fondo */
-  color: white;
-  /* Cambia el color del texto */
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
+  content: "-";
+  background-color: #d33333;
 }
 
-.btn-custom:hover {
-  background-color: #e53935;
-  /* Cambia el color de fondo al pasar el ratón sobre el botón */
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before { 
+  content: "+";
+  background-color: #31b131;
+  background-color: #74a2ff;
 }
 </style>

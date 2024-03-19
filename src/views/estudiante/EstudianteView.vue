@@ -1,6 +1,14 @@
 <template>
+   
+
+
+
+
   <div class="container ">
     <!-- <div class="container-fluid text-center"> -->
+
+     
+
 
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
@@ -40,7 +48,7 @@
           <button class="btn btn-success me-1" @click="historialAvanceGeneral">
             <i class="fa-solid fa-user-graduate"></i>HistorialAG.
           </button>
-          <button class="btn btn-secondary me-1" @click="materiasCursadas">
+          <button class="btn btn-success me-1" @click="materiasCursadas">
             <i class="fa-solid fa-user-graduate"></i>HistorialAcad.
           </button>
           <button class="btn btn-success me-1" @click="formularioA()">
@@ -71,7 +79,7 @@
               extend: 'selected',
               text: 'Edit',
               name: 'edit'
-            }], pageLength: 10,
+            }], pageLength: 5,
             //responsivePriority: 1,                                                   
             columnDefs: [{
               width: '40%', target: [6],
@@ -996,25 +1004,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
-  top: 33%;
-  left: 5px;
-  height: 1em;
-  width: 1em;
-  margin-top: -5px;
-  display: block;
-  position: absolute;
-  color: white;
-  border: .15em solid white;
-  border-radius: 1em;
-  box-shadow: 0 0 0.2em #444;
-  box-sizing: content-box;
-  text-align: center;
-  text-indent: 0 !important;
-  font-family: "Courier New", Courier, monospace;
-  line-height: 1em;
+table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before { 
   content: "+";
   background-color: #31b131;
   background-color: #74a2ff;
 }
+
 </style>

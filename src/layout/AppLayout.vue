@@ -75,4 +75,11 @@ const isOutsideClicked = (event) => {
     <Toast />
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.layout-main-container::after{
+    background-color: #E8EEE9;
+}
+.layout-sidebar{
+    background-color: #E8EEE9;
+}
+</style>

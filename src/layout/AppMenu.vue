@@ -513,8 +513,8 @@ const model3 = ref([
                 label: 'Gestión de Inscripciones',
                 icon: 'pi pi-fw pi-cog',
                 items: [
-                    { label: 'Estudiantes Nuevos', icon: 'pi pi-fw pi-user', to: '/habilitados-nuevos' },
-                    { label: 'Estudiantes Regulares', icon: 'pi pi-fw pi-user', to: '/habilitados-regulares' }
+                    { label: 'Inscripción Nuevos', icon: 'pi pi-fw pi-user', to: '/habilitados-nuevos' },
+                    { label: 'Inscripción Regulares', icon: 'pi pi-fw pi-user', to: '/habilitados-regulares' }
                 ]
             },
             {

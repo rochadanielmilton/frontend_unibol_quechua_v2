@@ -71,7 +71,7 @@
                   NOMBRE DE ASIGNATURA
                 </th>
                 <th class="d-none d-md-block">
-                  AÃ‘O ASIGNADO
+                  AÑO ASIGNADO
                 </th>
 
                 <!-- <th>

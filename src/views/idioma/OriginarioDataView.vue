@@ -221,4 +221,24 @@ export default {
 
 /*@import 'datatables.net-dt';*/
 @import 'datatables.net-responsive-dt';
+
+table.dtr-inline.collapsed>tbody>tr>td.dtr-control,
+table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
+  content: "-";
+  background-color: #d33333;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before { 
+  content: "+";
+  background-color: #31b131;
+  background-color: #74a2ff;
+}
 </style>

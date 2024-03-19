@@ -133,4 +133,8 @@ const changeIdioma = () => {
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.layout-topbar{
+background-color: #99D19B;
+}
+</style>
