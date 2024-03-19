@@ -50,9 +50,9 @@ export default {
     const {loginUser} =useAuth();
 
     const userForm = ref({
-        name:'Johnny',
+        name:'',
         //email:'patrickgrsrs@gmail.com',
-        password:'123456789'
+        password:''
     })
         return{
             userForm,
