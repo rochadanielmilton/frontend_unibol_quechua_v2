@@ -91,9 +91,7 @@
               <!-- <th>
                   SIGLA CONV.
                 </th> -->
-              <th>
-                HOMOL.
-              </th>
+              
               <th>
                 ASIGNATURA
               </th>
@@ -109,6 +107,9 @@
               </th>
               <th>
                 ESTADO
+              </th>
+              <th>
+                HOMOL.
               </th>
               <!-- <th>
                         INS. DE APR.
