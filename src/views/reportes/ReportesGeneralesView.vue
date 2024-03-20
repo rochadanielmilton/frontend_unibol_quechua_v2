@@ -12,6 +12,18 @@
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <div class="mb-3 fw-bold ">
+
+          <div class="mb-3 fs-5 text-center">
+            REPORTE DE ESTUDIANTES INSCRITOS GENERAL
+          </div>
+
+        </div>
+      </div>
+    </div>
     <!-- <div class="row">
       <div class="mb-3">        
         <div class="mb-3 d-grid gap-2 d-md-block">

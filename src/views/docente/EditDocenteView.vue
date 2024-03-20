@@ -40,6 +40,14 @@
             </div>
                     
            
+            <div class="input-group mb-3">
+              <input type="email" v-model="correo" id="correo" class="form-control" maxlength="50" placeholder="Correo" required>
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="number" v-model="numero_item" id="numero_item" class="form-control" maxlength="50" placeholder="Número Item" required>
+            </div>
+
             <div class="input-group mb-3"> 
               <select class="form-select text-center" id="estado" required v-model="estado">
                 <option value="" selected>---Estado---</option>
@@ -70,7 +78,7 @@ export default {
   name: 'EditDocenteView',
   data(){
     return {
-      id:0,nombres:'',apellidop:'',apellidom:'',ci:'',celular:0,direccion:'',profesion:'',estado:'',
+      id:0,nombres:'',apellidop:'',apellidom:'',ci:'',celular:0,direccion:'',profesion:'',estado:'',correo:'',numero_item:'',
       url:BASE_URL+'/docentes/docentes'
     }
   },
@@ -118,6 +126,8 @@ export default {
                           celular:this.celular,
                           direccion:this.direccion,
                           profesion:this.profesion,
+                          correo:this.correo,
+                          numero_item:this.numero_item,
                           estado:this.estado,                          
                         };
 

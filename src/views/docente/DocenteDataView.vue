@@ -94,11 +94,18 @@
                 CELULAR
               </th>
               <th>
-                DIRECCION
+                DIRECCIÓN
               </th>
               <th>
-                PROFESION
+                PROFESIÓN
               </th>
+              <th>
+                CORREO
+              </th>
+              <th>
+                NÚMERO ITEM
+              </th>
+
               <th>
                 ESTADO
               </th>
@@ -196,6 +203,8 @@ export default {
         { data: 'celular' },
         { data: 'direccion' },
         { data: 'profesion' },
+        { data: 'correo' },
+        { data: 'numero_item' },
         { data: 'estado' },
       ]
 

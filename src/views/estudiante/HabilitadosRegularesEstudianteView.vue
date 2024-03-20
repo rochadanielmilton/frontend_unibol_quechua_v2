@@ -11,7 +11,7 @@
         <!-- </div> -->
 
         <div class="mb-3 fs-4 text-center">
-          PLANILLA DE ESTUDIANTES HABILITADOS PARA LA INSCRIPCION:
+          PLANILLA DE ESTUDIANTES REGULARES HABILITADOS PARA LA INSCRIPCION:
         </div>
 
         <!-- <div class=" mb-3">                 
@@ -45,19 +45,19 @@
       <div class="mb-3">
         <!-- <div class="d-flex justify-content-around ">         -->
         <div class="mb-3 d-grid gap-2 d-md-block">
-          <button class="btn btn-outline-success float-end">
+          <button class="btn btn-success float-end">
             <i class="fa-solid fa-table"></i> <router-link to="/curso-preparatorio"
               class="nav-link active">ESTUDIANTES-PREPARATORIO</router-link>
           </button>
           <div class="mb-3 d-grid gap-2 d-md-block">
-            <button class="btn btn-outline-success  me-1" @click="inscribirEstudiante">
+            <button class="btn btn-success  me-1" @click="inscribirEstudiante">
               <i class="fa-solid fa-user-plus"></i>INSCRIBIR
             </button>
             <!-- col-md-2  col-lg-2 -->
-            <button class="btn btn-danger  rounded   me-1" @click="reimprimirInscripcionRegulares()">
+            <button class="btn btn-success  rounded   me-1" @click="reimprimirInscripcionRegulares()">
               REIMPR.-R
             </button>
-            <button class="btn btn-outline-secondary me-1" @click="recepcionAnularInscripcion()">
+            <button class="btn btn-danger me-1" @click="recepcionAnularInscripcion()">
               <i class="fa-solid fa-user-graduate"></i>ANULAR INSC.
             </button>
           </div>
