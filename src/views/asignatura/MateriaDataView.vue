@@ -100,9 +100,9 @@
               <th>
                 DESCRIPCION
               </th>
-              <th>
+              <!-- <th>
                 DOCENTE
-              </th>
+              </th> -->
               <th>
                 HORAS PRACTICAS
               </th>
@@ -216,7 +216,7 @@ export default {
         // },        
 
         { data: 'descripcion' },
-        { data: 'id_docente' },
+        //{ data: 'id_docente' },
         { data: 'horas_practicas' },
         { data: 'horas_teoricas' },
         { data: 'total_horas' },

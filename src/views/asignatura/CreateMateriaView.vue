@@ -21,7 +21,7 @@
             <div class="input-group mb-3">     
               <input type="text" v-model="descripcion" id="descripcion" class="form-control" maxlength="100" placeholder="Descripcion" required>              
             </div>
-            
+<!--             
             <div class="input-group mb-3"> 
               <select class="form-select text-center" id="id_docente" required v-model="id_docente">              
                 <option value="" selected disabled>
@@ -31,7 +31,7 @@
                     {{`${docente.nombres} ${docente.apellidop} ${docente.apellidom}`}}
                 </option>
               </select>                 
-            </div>
+            </div> -->
                       
 
             <div class="input-group mb-3">   
