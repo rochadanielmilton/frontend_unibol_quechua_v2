@@ -80,10 +80,10 @@
           <thead v-if="materias" class="pb-4 table-light">
             <tr>
               <th>
-                #
+                N°
               </th>
               <th>
-                GESTION
+                GESTIÓN
               </th>
               <th>
                 SIGLA CODIGO
@@ -103,7 +103,7 @@
                 PREREQUISITOS
               </th>
               <th>
-                CALIFICACION NUMERAL
+                CALIFICACIÓN NUMERAL
               </th>
               <th>
                 ESTADO
