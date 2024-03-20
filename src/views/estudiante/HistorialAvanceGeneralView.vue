@@ -462,7 +462,7 @@ export default {
                        CARRERA: 
                        FECHA DE EMISIÓN: 
                        NIVEL DE FORMACIÓN: 
-                       `, -10, finalY);
+                       `, 10, finalY);
       //finalY+=25;    
       //añadimos 20+50 por el tamaño de las imagenes
       //finalY+=35; 
@@ -477,7 +477,7 @@ export default {
                        ${this.nombre_carrera}
                        ${this.fecha_emision}
                        ${this.grado}
-                       `, (doc.internal.pageSize.getWidth() / 2) - 150, finalY);
+                       `, (doc.internal.pageSize.getWidth() / 2) - 130, finalY);
 
 
 

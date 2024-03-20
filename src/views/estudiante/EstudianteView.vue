@@ -38,7 +38,7 @@
           <button class="btn btn-success me-1" @click="perfilEstudiante">
             <i class="fa-solid fa-user-graduate"></i>Perfil
           </button>
-          <button class="btn btn-warning rounded col-md-1 col-lg-1  me-1" @click="editarSeleccionado()">
+          <button class="btn btn-warning rounded   me-1" @click="editarSeleccionado()">
             <i class="fa-solid fa-user-plus"></i>Editar
           </button>
           <!-- <button class="btn btn-outline-danger  rounded col-md-1  col-lg-1  me-1" @click="eliminarSeleccionado()">
