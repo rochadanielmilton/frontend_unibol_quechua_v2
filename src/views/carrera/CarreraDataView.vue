@@ -26,11 +26,11 @@
         <!-- <div class="d-flex justify-content-around ">         -->
         <div class="mb-3 d-grid gap-2 d-md-block">
 
-          <button class="btn btn-outline-success  float-end ">
-            <i class="fa-solid fa-user-plus"></i> <router-link to="/carrera/create" class="nav-link active">NUEVA
+          <button class="btn btn-success  float-end ">
+            <router-link to="/carrera/create" class="nav-link active"><i class="fa-solid fa-user-plus"></i>NUEVA
               CARRERA</router-link>
           </button>
-          <button class="btn btn-outline-warning rounded   me-1" @click="editarSeleccionado()">
+          <button class="btn btn-warning rounded   me-1" @click="editarSeleccionado()">
             Editar
             <i class="fa-solid fa-user-plus"></i>
           </button>
@@ -143,7 +143,7 @@
 import { ref } from 'vue';
 import axios from "axios";
 //import DataTable from "datatables.net-bs5";
-import { confirmar1 } from '../../funciones';
+import { confirmar1 ,show_alerta} from '../../funciones';
 
 
 import DataTable from 'datatables.net-vue3';

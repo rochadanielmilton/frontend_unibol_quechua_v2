@@ -147,7 +147,7 @@
    -->
 
 
-   <div class="grid d-flex" v-if="numero_estudiantes_totales">
+   <!-- <div class="grid d-flex" v-if="numero_estudiantes_totales">
     <div class="col-12 lg:col-6 xl:col-4 d-flex align-items-stretch">
       <div class="card mb-0">
         <div class="flex justify-content-between mb-3">
@@ -159,8 +159,7 @@
             style="width: 2.5rem; height: 2.5rem" @click="ReportesCarrera()">
             <i class="pi pi-paperclip text-blue-500 pe-auto"></i>
           </div>
-        </div>
-        <!-- <span class="text-green-500 font-medium">24 new </span> -->
+        </div>        
         <span class="text-500 font-medium text-l">INGENIERÍA EN ACUICULTURA COMUNITARIA Y GESTIÓN DE AGUA:</span>
         <span class="text-green-500 font-medium"> {{ numero_estudiantes_acuc }} INSCRITOS</span>
         <span class="text-blue-500 font-medium"> {{ porcentaje_estudiantes_acuc }} (%)</span>
@@ -187,8 +186,7 @@
             <i class="pi pi-paperclip text-orange-500 text-xl"></i>
           </div>
         </div>
-        <!-- <span class="text-green-500 font-medium">%52+ </span> -->
-        <!-- <span class="text-500">since last week</span> -->
+        
         <span class="text-500 font-medium text-l">HOMBRES:</span>
         <span class="text-green-500 font-medium"> {{ varones_generales }} INSCRITOS</span><span
           class="text-blue-500 font-medium"> {{ porcentaje_varones_generales }} (%)</span>
@@ -197,7 +195,7 @@
           class="text-blue-500 font-medium"> {{ porcentaje_mujeres_generales }} (%)</span>
       </div>
     </div>
-    <!-- <div class="col-12 lg:col-6 xl:col-3 d-flex align-items-stretch">
+    <div class="col-12 lg:col-6 xl:col-3 d-flex align-items-stretch">
       <div class="card mb-0">
         <div class="flex justify-content-between mb-3">
           <div>
@@ -220,7 +218,7 @@
         <span class="text-500 font-medium text-l">ORGANIZACION #4:</span>
         <span class="text-green-500 font-medium"> # INSCRITOS</span><span class="text-blue-500 font-medium"> # (%)</span>
       </div>
-    </div> -->
+    </div>
     <div class="col-12 lg:col-6 xl:col-4 d-flex align-items-stretch">
       <div class="card mb-0">
         <div class="flex justify-content-between mb-3">
@@ -232,8 +230,7 @@
             style="width: 2.5rem; height: 2.5rem" @click="ReportesDepartamento()">
             <i class="pi pi-paperclip text-orange-500 text-xl"></i>
           </div>
-        </div>
-        <!-- <span class="text-green-500 font-medium">85 </span> -->
+        </div>        
         <div class="text-900 font-medium text-l">DEPARTAMENTOS(MAS AFLUENCIA):</div>
         <div class="d-flex justify-content-between">
           <div>
@@ -346,7 +343,7 @@
         </h3>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>

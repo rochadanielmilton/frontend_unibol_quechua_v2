@@ -11,11 +11,11 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="mb-3">        
+    <div class="row habil">
+      <div class="mb-3 seleccion">        
         <div class="mb-3 d-grid gap-2 d-md-block">
 
-        <div class="input-group me-1">   
+        <div class="input-group me-1 ">   
           <select class="form-select text-center me-1" @change="onChange($event)" id="nombre_carrera" :disabled="gestionActivated" v-model="selectedStatus">              
               <option value="" selected >
               <!-- ---Departamento Nacimiento--- -->
@@ -70,7 +70,7 @@
       </div>
     </div>
 
-    <!-- <div class="row mt-3 justify-center">
+    <div class="row mt-3 justify-center no-habil">
     <div class="col-md-6 offset-md-3">
       <div class="card">
         <div class="card-header bg-secondary text-white text-center">
@@ -123,7 +123,7 @@
         </div>
       </div>
     </div>
-    </div> -->
+    </div>
     
     <div class="row">
       <!-- <div class=" col-lg-12 col-sm-12 offset-lg-2 align-center"> -->

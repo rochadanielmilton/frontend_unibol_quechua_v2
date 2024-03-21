@@ -16,12 +16,12 @@
         <!-- <div class="d-flex justify-content-around ">         -->
         <div class="mb-3 d-grid gap-2 d-md-block">
 
-          <button class="btn btn-outline-success  float-end ">
-            <i class="fa-solid fa-user-plus"></i> <router-link to="/idioma-originario/create"
-              class="nav-link active">NUEVO
+          <button class="btn btn-success  float-end ">
+             <router-link to="/idioma-originario/create"
+              class="nav-link active"><i class="fa-solid fa-user-plus"></i>NUEVO
               IDIOMA</router-link>
           </button>
-          <button class="btn btn-outline-warning rounded   me-1" @click="editarSeleccionado()">
+          <button class="btn btn-warning rounded   me-1" @click="editarSeleccionado()">
             Editar
             <i class="fa-solid fa-user-plus"></i>
           </button>
@@ -104,7 +104,7 @@
 // @ is an alias to /src
 import { ref } from 'vue';
 import axios from "axios";
-import { confirmar, confirmar1 } from '../../funciones';
+import { confirmar, confirmar1, show_alerta } from '../../funciones';
 //import {ref} from 'vue';
 // const provincias = computed(()=>{
 //         return this.provincias = this.getProvincias()

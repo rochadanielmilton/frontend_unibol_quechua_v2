@@ -54,3 +54,23 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
     color: green;
     /* #ECF7ED */
 }
+.no-habil{
+  display: none;
+}
+
+@media (max-width: 767px){
+    .fs-6{
+    font-size: .875rem !important;
+    line-height: 1.25rem;
+  }
+  .input-group{
+    font-size:  .775rem !important;
+  }
+  .habil
+  {
+    display: none;
+  }
+  .no-habil{
+    display: inline-block;
+  }
+}

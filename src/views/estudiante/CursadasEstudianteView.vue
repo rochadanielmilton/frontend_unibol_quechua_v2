@@ -9,7 +9,7 @@
           HISTORIAL ACADÉMICO 
         </div>
 
-        <div class="  fs-6">
+        <div class="  fs-6 normal-letter">
           APELLIDOS Y NOMBRES: {{ `${apellidoP} ${apellidoM} ${nombres}` }}
         </div>
 
@@ -66,8 +66,8 @@
               width: '10%', target: [7],
             },
             { responsivePriority: 1, targets: 1 },
-            { responsivePriority: 2, targets: 2 },
-            { responsivePriority: 3, targets: 3 },
+            { responsivePriority: 2, targets: 3 },
+            { responsivePriority: 3, targets: 7 },
             { responsivePriority: 4, targets: 4 },
             ],
             language: {
@@ -652,10 +652,6 @@ body {
   line-height: 1.25rem;
 }
 
-.normal-letter {
-  font-size: .875rem;
-  line-height: 1.25rem;
-}
 
 /* body {
     font-size: .875rem;

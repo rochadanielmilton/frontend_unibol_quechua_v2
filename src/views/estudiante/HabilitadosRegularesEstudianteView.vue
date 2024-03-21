@@ -45,10 +45,10 @@
       <div class="mb-3">
         <!-- <div class="d-flex justify-content-around ">         -->
         <div class="mb-3 d-grid gap-2 d-md-block">
-          <button class="btn btn-success float-end">
+          <!-- <button class="btn btn-success float-end">
             <i class="fa-solid fa-table"></i> <router-link to="/curso-preparatorio"
               class="nav-link active">ESTUDIANTES-PREPARATORIO</router-link>
-          </button>
+          </button> -->
           <div class="mb-3 d-grid gap-2 d-md-block">
             <button class="btn btn-success  me-1" @click="inscribirEstudiante">
               <i class="fa-solid fa-user-plus"></i>INSCRIBIR

@@ -27,11 +27,11 @@
       <div class="mb-3">
         <!-- <div class="d-flex justify-content-around ">         -->
         <div class="mb-3 d-grid gap-2 d-md-block">
-          <button class="btn btn-outline-success  float-end ">
-            <i class="fa-solid fa-user-plus"></i> <router-link to="/asignatura/create" class="nav-link active">NUEVA
+          <button class="btn btn-success  float-end ">
+             <router-link to="/asignatura/create" class="nav-link active"><i class="fa-solid fa-user-plus"></i>NUEVA
               ASIGNATURA</router-link>
           </button>
-          <button class="btn btn-outline-warning rounded   me-1" @click="editarSeleccionado()">
+          <button class="btn btn-warning rounded   me-1" @click="editarSeleccionado()">
             Editar
             <i class="fa-solid fa-user-plus"></i>
           </button>
@@ -64,7 +64,7 @@
               extend: 'selected',
               text: 'Edit',
               name: 'edit'
-            }], pageLength: 10,
+            }], pageLength: 5,
             //responsivePriority: 1,                                                   
             columnDefs: [{
               width: '10%', target: [2],
@@ -76,7 +76,7 @@
             // },
             { responsivePriority: 1, targets: 1 },
             { responsivePriority: 2, targets: 2 },
-            { responsivePriority: 3, targets: 3 },
+            { responsivePriority: 3, targets: 10 },
             { responsivePriority: 4, targets: 4 },
             ],
             language: {
@@ -100,9 +100,9 @@
               <th>
                 DESCRIPCION
               </th>
-              <!-- <th>
+              <th>
                 DOCENTE
-              </th> -->
+              </th>
               <th>
                 HORAS PRACTICAS
               </th>
@@ -217,6 +217,8 @@ export default {
 
         { data: 'descripcion' },
         //{ data: 'id_docente' },
+        { data: 'nombre_docente' },
+        
         { data: 'horas_practicas' },
         { data: 'horas_teoricas' },
         { data: 'total_horas' },

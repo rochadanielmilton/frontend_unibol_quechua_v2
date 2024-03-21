@@ -66,8 +66,8 @@
               width: '10%', target: [7],
             },
             { responsivePriority: 1, targets: 1 },
-            { responsivePriority: 2, targets: 2 },
-            { responsivePriority: 3, targets: 3 },
+            { responsivePriority: 2, targets: 3 },
+            { responsivePriority: 3, targets: 7 },
             { responsivePriority: 4, targets: 4 },
             ],
             language: {

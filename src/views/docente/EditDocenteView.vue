@@ -102,7 +102,8 @@ export default {
           this.ci=response.data['ci'],
           this.celular=response.data['celular'],
           this.direccion=response.data['direccion'],
-          
+          this.correo=response.data['correo'],
+          this.numero_item=response.data['numero_item'],
 
           this.profesion=response.data['profesion'],
                               
