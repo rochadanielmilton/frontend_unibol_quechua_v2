@@ -27,18 +27,18 @@
         <!-- <div class="d-flex justify-content-around ">         -->
         <div class="mb-3 d-grid gap-2 d-md-block">
 
-          <button class="btn btn-outline-success  float-end ">
-            <i class="fa-solid fa-user-plus"></i> <router-link to="/docente/create" class="nav-link active">NUEVO
+          <button class="btn btn-success  float-end ">
+             <router-link to="/docente/create" class="nav-link active"><i class="fa-solid fa-user-plus"></i>NUEVO
               DOCENTE</router-link>
           </button>
-          <button class="btn btn-outline-warning rounded   me-1" @click="editarSeleccionado()">
+          <button class="btn btn-warning rounded   me-1" @click="editarSeleccionado()">
             Editar
             <i class="fa-solid fa-user-plus"></i>
           </button>
-          <button class="btn btn-danger  rounded   me-1" @click="eliminarSeleccionado()">
+          <!-- <button class="btn btn-danger  rounded   me-1" @click="eliminarSeleccionado()">
             Eliminar
             <i class="fa-solid fa-trash"></i>
-          </button>
+          </button> -->
 
         </div>
       </div>
@@ -93,9 +93,9 @@
               <th>
                 CELULAR
               </th>
-              <th>
+              <!-- <th>
                 DIRECCIÓN
-              </th>
+              </th> -->
               <th>
                 PROFESIÓN
               </th>
@@ -201,7 +201,7 @@ export default {
         { data: 'apellidom' },
         { data: 'ci' },
         { data: 'celular' },
-        { data: 'direccion' },
+        //{ data: 'direccion' },
         { data: 'profesion' },
         { data: 'correo' },
         { data: 'numero_item' },

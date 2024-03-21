@@ -6,7 +6,7 @@
       <div class="mb-3 fw-bold  normal-letter">
 
         <div class="mb-3 fs-5 text-center">
-          HISTORIAL ACADÉMICO 
+          HISTORIAL ACADÉMICO DE AVANCE GENERAL
         </div>
 
         <div class="  fs-6">

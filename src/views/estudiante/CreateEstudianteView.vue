@@ -180,6 +180,46 @@
 
             <!-- AÑADIDOS -->
             
+            <div class="input-group mb-3">   
+              <input type="text" v-model="homologacion" id="homologacion" class="form-control" maxlength="100" placeholder="Homologacion" >
+            </div>
+            <div class="input-group mb-3">   
+              <input type="text" v-model="estado_homologacion" id="estado_homologacion" class="form-control" maxlength="100" placeholder="Estado Homologacion" >
+            </div>
+            <div class="input-group mb-3">   
+              <input type="text" v-model="convalidacion" id="convalidacion" class="form-control" maxlength="100" placeholder="Convalidacion" >
+            </div>
+            <div class="input-group mb-3">   
+              <input type="text" v-model="estado_convalidacion" id="estado_convalidacion" class="form-control" maxlength="100" placeholder="Estado Convalidacion" >
+            </div>
+            
+
+            <div class="input-group mb-3">   
+              <select class="form-select text-center" id="titulado_tecnico_superior"  v-model="titulado_tecnico_superior">
+                <option value="" selected>-------Titulado Técnico Superior-------</option>
+                <option value="si">Si</option>
+                <option value="no">No</option>
+              </select>    
+              
+            </div>
+            
+            <div class="input-group mb-3">   
+              <input type="text" v-model="descripcion_titulado_superior" id="descripcion_titulado_superior" class="form-control" maxlength="255" placeholder="Descripcion Titulado Superior" >
+            </div>
+            <div class="input-group mb-3">   
+              <select class="form-select text-center" id="titulado_licenciatura"  v-model="titulado_licenciatura">
+                <option value="" selected>-------Titulado Licenciatura-------</option>
+                <option value="si">Si</option>
+                <option value="no">No</option>
+              </select>                  
+            </div>
+
+            
+            <div class="input-group mb-3">   
+              <input type="text" v-model="descripcion_titulado_licenciatura" id="descripcion_titulado_licenciatura" class="form-control" maxlength="255" placeholder="Descripcion Titulado Licenciatura" >
+            </div>
+
+            <!-- AÑADIDOS -->
  
 
             <div class="input-group mb-3">   
@@ -215,7 +255,7 @@
                 <option value="no">No</option>
               </select>    
               
-            </div>
+            </div>  
               
 
             <!-- </div> -->
@@ -242,6 +282,8 @@ export default {
     return {
       ci_estudiante:'',extencion:'',nombres:'',apellidoP:'',apellidoM:'',direccion:'',celular:'',anio_ingreso:'',anio_cursado:'',genero:'',fecha_nacimiento:'',depa_nacimiento:'',prov_nacimiento:'',munic_nacimiento:'',tipo_ingreso:'',
       estado_civil:'',idioma_nativo:'',idioma_regular:'',email:'',nacionalidad:'',numero_archivo:'',numero_registro:'',obs1:'',obs2:'',obs3:'',estado:'',descripcion_estado:'',baja:'',codigo_carrera:'',
+      homologacion:'',estado_homologacion:'',convalidacion:'',estado_convalidacion:'',egresado:'',estado_egresado:'',      
+      titulado_tecnico_superior:'',descripcion_titulado_superior:'',titulado_licenciatura:'',descripcion_titulado_licenciatura:'',
       ci_especial:'',photography:'',fileFoto:null,
       idiomas:null,carreras:null,departamentos:null,provincias:null,principal:'',mostrar_especial:false,
       url:BASE_URL+'/estudiantes/estudiantes/'      
@@ -394,6 +436,15 @@ export default {
                           nacionalidad:this.nacionalidad,
                           numero_archivo:this.numero_archivo,
                           numero_registro:this.numero_registro,
+
+                          homologacion:this.homologacion,
+                          estado_homologacion:this.estado_homologacion,
+                          convalidacion:this.convalidacion,
+                          estado_convalidacion:this.estado_convalidacion,                          
+                          titulado_tecnico_superior:this.titulado_tecnico_superior,
+                          descripcion_titulado_superior:this.descripcion_titulado_superior,
+                          titulado_licenciatura:this.titulado_licenciatura,
+                          descripcion_titulado_licenciatura:this.descripcion_titulado_licenciatura,
 
                           obs1:this.obs1,
                           obs2:this.obs2,

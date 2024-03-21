@@ -1028,9 +1028,10 @@ export default {
         //theme:'grid',theme:'striped',theme:'plain'
         theme: 'plain',
         tableLineColor: [0, 0, 0], tableLineWidth: 0.2,
-        styles: { fontSize: 6, cellWidth: 'wrap', halign: 'justify' },
+        styles: { fontSize: 7, cellWidth: 'wrap', halign: 'justify' },
         bodyStyles: { lineWidth: 0.2, lineColor: [0, 0, 0] },
         columnStyles: {
+          0: { cellWidth: 100, halign: 'center' },
           1: { columnWidth: 'auto' }
         },
         //tableWidth: doc.internal.pageSize.getWidth() / 3,

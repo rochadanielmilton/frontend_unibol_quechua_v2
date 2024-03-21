@@ -29,7 +29,7 @@
               <input type="text" v-model="descripcion" id="descripcion" class="form-control" maxlength="100" placeholder="Descripcion" required>              
             </div>
 
-            <div class="input-group mb-3"> 
+            <!-- <div class="input-group mb-3"> 
               <select class="form-select text-center" id="estado" required v-model="id_docente">              
                 <option value="" selected disabled>
                 ----------------Docente----------------
@@ -38,7 +38,7 @@
                     {{`${docente.nombres} ${docente.apellidop} ${docente.apellidom}`}}
                 </option>
               </select>                 
-            </div>
+            </div> -->
 
           
 

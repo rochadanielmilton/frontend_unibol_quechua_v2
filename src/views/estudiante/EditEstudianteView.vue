@@ -205,17 +205,31 @@
             <div class="input-group mb-3">   
               <input type="text" v-model="estado_convalidacion" id="estado_convalidacion" class="form-control" maxlength="100" placeholder="Estado Convalidacion" >
             </div>
+            
+
             <div class="input-group mb-3">   
-              <input type="text" v-model="egresado" id="egresado" class="form-control" maxlength="100" placeholder="Egresado" >
+              <select class="form-select text-center" id="titulado_tecnico_superior"  v-model="titulado_tecnico_superior">
+                <option value="" selected>-------Titulado Técnico Superior-------</option>
+                <option value="si">Si</option>
+                <option value="no">No</option>
+              </select>    
+              
+            </div>
+            
+            <div class="input-group mb-3">   
+              <input type="text" v-model="descripcion_titulado_superior" id="descripcion_titulado_superior" class="form-control" maxlength="255" placeholder="Descripcion Titulado Superior" >
             </div>
             <div class="input-group mb-3">   
-              <input type="text" v-model="estado_egresado" id="estado_egresado" class="form-control" maxlength="100" placeholder="Estado Egresado" >
+              <select class="form-select text-center" id="titulado_licenciatura"  v-model="titulado_licenciatura">
+                <option value="" selected>-------Titulado Licenciatura-------</option>
+                <option value="si">Si</option>
+                <option value="no">No</option>
+              </select>                  
             </div>
+
+            
             <div class="input-group mb-3">   
-              <input type="text" v-model="titulado" id="titulado" class="form-control" maxlength="100" placeholder="Titulado" >
-            </div>
-            <div class="input-group mb-3">   
-              <input type="text" v-model="descripcion_titulado" id="descripcion_titulado" class="form-control" maxlength="100" placeholder="Descripcion Titulado" >
+              <input type="text" v-model="descripcion_titulado_licenciatura" id="descripcion_titulado_licenciatura" class="form-control" maxlength="255" placeholder="Descripcion Titulado Licenciatura" >
             </div>
 
 
@@ -293,7 +307,8 @@ export default {
     return {
       ci_estudiante:0,extencion:'',nombres:'',apellidoP:'',apellidoM:'',direccion:'',celular:0,anio_ingreso:'',anio_cursado:'',genero:'',fecha_nacimiento:'',depa_nacimiento:'',prov_nacimiento:'',munic_nacimiento:'',tipo_ingreso:'',
       fotografia:'',estado_civil:'',idioma_nativo:'',idioma_regular:'',email:'',nacionalidad:'',numero_archivo:'',
-      homologacion:'',estado_homologacion:'',convalidacion:'',estado_convalidacion:'',egresado:'',estado_egresado:'',titulado:'',descripcion_titulado:'',
+      homologacion:'',estado_homologacion:'',convalidacion:'',estado_convalidacion:'',egresado:'',estado_egresado:'',      
+      titulado_tecnico_superior:'',descripcion_titulado_superior:'',titulado_licenciatura:'',descripcion_titulado_licenciatura:'',      
       numero_registro:0,obs1:'',obs2:'',obs3:'',estado:'',descripcion_estado:'',baja:'',codigo_carrera:0,nombre_carrera:'',
       ci_especial:'',photography:'',fileFoto:null,
       idiomas:null,carreras:null,principal:'',provincias:null,departamentos:null,noencontrado:true,
@@ -377,10 +392,13 @@ export default {
           this.estado_homologacion=response.data['estado_homologacion'],
           this.convalidacion=response.data['convalidacion'],
           this.estado_convalidacion=response.data['estado_convalidacion'],
-          this.egresado=response.data['egresado'],
-          this.estado_egresado=response.data['estado_egresado'],
-          this.titulado=response.data['titulado'],
-          this.descripcion_titulado=response.data['descripcion_titulado'],
+
+                    
+          this.titulado_tecnico_superior=response.data['titulado_tecnico_superior'],
+          this.descripcion_titulado_superior=response.data['descripcion_titulado_superior'],
+          this.titulado_licenciatura=response.data['titulado_licenciatura'],
+          this.descripcion_titulado_licenciatura=response.data['descripcion_titulado_licenciatura'],
+          
 
           this.numero_registro=response.data['numero_registro'],
           this.obs1=response.data['obs1'],
@@ -501,11 +519,11 @@ export default {
                           homologacion:this.homologacion,
                           estado_homologacion:this.estado_homologacion,
                           convalidacion:this.convalidacion,
-                          estado_convalidacion:this.estado_convalidacion,
-                          egresado:this.egresado,
-                          estado_egresado:this.estado_egresado,
-                          titulado:this.titulado,
-                          descripcion_titulado:this.descripcion_titulado,
+                          estado_convalidacion:this.estado_convalidacion,                          
+                          titulado_tecnico_superior:this.titulado_tecnico_superior,
+                          descripcion_titulado_superior:this.descripcion_titulado_superior,
+                          titulado_licenciatura:this.titulado_licenciatura,
+                          descripcion_titulado_licenciatura:this.descripcion_titulado_licenciatura,
 
                           numero_registro:this.numero_registro,
 
