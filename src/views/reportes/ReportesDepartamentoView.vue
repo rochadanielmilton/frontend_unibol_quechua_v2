@@ -89,38 +89,38 @@
           }" :key="keycon">
           <thead class="pb-4 table-light">
             <tr>
-              <th>
+              <th style="font-size: 12px;">
                 CARRERA
               </th>
               <!-- <th class="d-none d-sm-block pb-4 col"> -->
-              <th>
+              <th style="font-size: 10px;">
                 COCHABAMBA
               </th>
-              <th>
+              <th style="font-size: 10px;">
                 LA PAZ
               </th>
-              <th>
+              <th style="font-size: 10px;">
                 SANTA CRUZ
               </th>
-              <th>
+              <th style="font-size: 10px;">
                 ORURO
               </th>
-              <th>
+              <th style="font-size: 10px;">
                 POTOSI
               </th>
-              <th>
+              <th style="font-size: 10px;">
                 CHUQUISACA
               </th>
-              <th>
+              <th style="font-size: 10px;">
                 TARIJA
               </th>
-              <th>
+              <th style="font-size: 10px;">
                 BENI
               </th>
-              <th>
+              <th style="font-size: 10px;">
                 PANDO
               </th>
-              <th>
+              <th style="font-size: 10px;">
                 TOTAL
               </th>
               <!-- <th>
@@ -734,7 +734,7 @@ export default {
       doc.setTextColor(10);
       doc.setFontSize(8);
       doc.text(`
-                       Tukuy sunquwan yahcyaninchikta, ruwayninchikta, yuyayninchikta kallpachaspa sumaq kawsayman kutina                       
+                       Tukuy sunquwan yachayninchikta, ruwayninchikta, yuyayninchikta kallpachaspa sumaq kawsayman kutina                       
                        `, (doc.internal.pageSize.getWidth() / 2) - 5, finalY, null, null, "center");
       //finalY+=25;    
       //añadimos 20+50 por el tamaño de las imagenes

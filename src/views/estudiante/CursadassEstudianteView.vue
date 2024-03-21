@@ -54,10 +54,10 @@
             <thead v-if="materias" class="pb-4 table-light">
               <tr>
                 <th>
-                  #
+                  N°
                 </th>
                 <th>
-                  GESTION
+                  GESTIÓN
                 </th>
                 <th>
                   SIGLA CÓDIGO
@@ -72,13 +72,13 @@
                   PREREQUISITOS
                 </th>
                 <th>
-                  CALIFICACION NUMERAL
+                  CALIFICACIÓN NUMERAL
                 </th>
                 <th>
                   ESTADO
                 </th>
                 <th>
-                  HOMOLOGACIÓN
+                  HOMOL.
                 </th>
                 <!-- <th>
                         INS. DE APR.
@@ -360,7 +360,7 @@ export default {
       doc.setTextColor(10);
       doc.setFontSize(8);
       doc.text(`
-                       Tukuy sunquwan yahcyaninchikta, ruwayninchikta, yuyayninchikta kallpachaspa sumaq kawsayman kutina                       
+                       Tukuy sunquwan yachayninchikta, ruwayninchikta, yuyayninchikta kallpachaspa sumaq kawsayman kutina                       
                        `, (doc.internal.pageSize.getWidth() / 2) - 5, finalY, null, null, "center");
       //finalY+=25;    
       //añadimos 20+50 por el tamaño de las imagenes

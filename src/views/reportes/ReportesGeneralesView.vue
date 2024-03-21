@@ -99,25 +99,25 @@
           }" :key="columns.length">
           <thead class="table-light">
             <tr>
-              <th>
+              <th style="text-align: center;">
                 CARRERA
               </th>
-              <th>
+              <th style="text-align: center;">
                 PRIMER AÑO
               </th>
-              <th>
+              <th style="text-align: center;">
                 SEGUNDO AÑO
               </th>
-              <th>
+              <th style="text-align: center;">
                 TERCER AÑO
               </th>
-              <th>
+              <th style="text-align: center;">
                 CUARTO AÑO
               </th>
-              <th>
+              <th style="text-align: center;">
                 QUINTO AÑO
               </th>
-              <th>
+              <th style="text-align: center;">
                 TOTAL
               </th>
             </tr>
@@ -945,7 +945,7 @@ export default {
       doc.setTextColor(10);
       doc.setFontSize(8);
       doc.text(`
-                       Tukuy sunquwan yahcyaninchikta, ruwayninchikta, yuyayninchikta kallpachaspa sumaq kawsayman kutina                       
+                       Tukuy sunquwan yachayninchikta, ruwayninchikta, yuyayninchikta kallpachaspa sumaq kawsayman kutina                       
                        `, (doc.internal.pageSize.getWidth() / 2) - 5, finalY, null, null, "center");
       //finalY+=25;    
       //añadimos 20+50 por el tamaño de las imagenes

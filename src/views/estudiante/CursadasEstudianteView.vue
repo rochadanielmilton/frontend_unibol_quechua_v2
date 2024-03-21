@@ -80,13 +80,13 @@
           <thead v-if="materias" class="pb-4 table-light">
             <tr>
               <th>
-                #
+                N°
               </th>
               <th>
-                GESTION
+                GESTIÓN
               </th>
               <th>
-                SIGLA CODIGO
+                SIGLA CÓDIGO
               </th>
               <!-- <th>
                   SIGLA CONV.
@@ -103,7 +103,7 @@
                 PREREQUISITOS
               </th>
               <th>
-                CALIFICACION NUMERAL
+                CALIFICACIÓN NUMERAL
               </th>
               <th>
                 ESTADO
@@ -537,7 +537,7 @@ export default {
         REP.:REPROBADO
         AB.:ABANDONO
         CONV.:CONVALIDADO
-        *Documento solo válido para Trámite Interno.
+        *Documento solo válido para trámite interno.
           `, 40, finalY);
 
 
