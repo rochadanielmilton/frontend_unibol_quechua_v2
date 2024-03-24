@@ -1,33 +1,21 @@
 <template>
   <div class="container ">
     <div class="row">
-      <div class="mb-3">
-        <div class="d-grid col-6-mx-auto offset-md-9">
-          <!-- <button class="btn btn-success">
-            <router-link to="/departamento/create" class="nav-link active">NUEVO DEPARTAMENTO</router-link> <i
-              class="fa-solid fa-graduation-cap"></i>
-          </button> -->
-        </div>
-      </div>
-    </div>
-    <div class="row">
       <div class="col-lg-10 offset-lg-1">
         <div class="mb-3 fw-bold ">
 
           <div class="mb-3 fs-5 text-center">
             LISTA DE DEPARTAMENTOS:
-          </div>          
+          </div>
 
         </div>
       </div>
     </div>
     <div class="row">
       <div class="mb-3">
-        <!-- <div class="d-flex justify-content-around ">         -->
         <div class="mb-3 d-grid gap-2 d-md-block">
-
           <button class="btn btn-success  float-end ">
-             <router-link to="/departamento/create" class="nav-link active"><i class="fa-solid fa-user-plus"></i>NUEVO
+            <router-link to="/departamento/create" class="nav-link active"><i class="fa-solid fa-user-plus"></i>NUEVO
               DEPARTAMENTO</router-link>
           </button>
           <button class="btn btn-warning rounded   me-1" @click="editarSeleccionado()">
@@ -43,10 +31,7 @@
       </div>
     </div>
     <div class="row">
-      <!-- <div class="col-lg-12 col-sm-12 offset-lg-2 align-center"> -->
-      <!-- <div class="col-lg-12 col-sm-12 align-center"> -->
       <div class="table-responsive">
-        <!-- <table class="table table-bordered table-hover table-striped"> -->
         <DataTable ref="table" id="datatable" :data="departamentos" :columns="columns" v-if="departamentos"
           class="table table-bordered table-striped display small" :options="{
             select: true, responsive: true, autoWidth: true, dom: 'Bfrtip',
@@ -55,15 +40,10 @@
               text: 'Edit',
               name: 'edit'
             }], pageLength: 10,
-            //responsivePriority: 1,                                                   
             columnDefs: [{
               width: '20%', target: [0],
               width: '60%', target: [1],
             },
-              // { responsivePriority: 1, targets: 1 },
-              // { responsivePriority: 2, targets: 2 },
-              // { responsivePriority: 3, targets: 3 },
-              // { responsivePriority: 4, targets: 4 },
             ],
             language: {
               search: 'Buscar', zeroRecord: 'No hay registros que mostrar',
@@ -80,57 +60,35 @@
               <th>
                 NOMBRE
               </th>
-              <!-- <th class="col-2">
-                ACCIONES
-              </th> -->
             </tr>
           </thead>
           <tbody class="table-group-divider" id="contenido">
-            <!-- <tr v-for="departamento,i in departamentos" :key="departamento.id">
-                        <td>{{ i+1 }}</td>
-                        <td>{{ departamento.nombre_departamento }}</td>                        
-                        <td>
-                            <router-link :to="{path:'/departamento/edit/'+departamento.id}" class="btn btn-outline-warning">
-                                <i class="fa-solid fa-edit"></i>
-                            </router-link> &nbsp;
-                            <button class="btn btn-outline-danger" @:click="eliminar(departamento.id,departamento.nombre_departamento)">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>                     -->
           </tbody>
         </DataTable>
         <div v-else>
-            <div class="row justify-content-md-center">
-              <div class="col-3 alert-info text-center mt-5">
-                Cargando...
-                <h3 class="mt-2">
-                  <i class="fa fa-spin fa-sync"></i>
-                </h3>
-              </div>
+          <div class="row justify-content-md-center">
+            <div class="col-3 alert-info text-center mt-5">
+              Cargando...
+              <h3 class="mt-2">
+                <i class="fa fa-spin fa-sync"></i>
+              </h3>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-//import { ref } from 'vue';
 import axios from "axios";
-import { confirmar1 , show_alerta} from '../../funciones';
+import { confirmar1, show_alerta } from '../../funciones';
 import { ref } from 'vue';
-// const provincias = computed(()=>{
-//         return this.provincias = this.getProvincias()
-// })
-//const provincias = ref([]);
-//const contador =ref(0);
 
 import DataTable from 'datatables.net-vue3';
 import DataTableLib from 'datatables.net-bs5';
 import Select from "datatables.net-select";
 import 'datatables.net-responsive-bs5';
-//import 'datatables.net-select';
 
 DataTable.use(DataTableLib);
 DataTable.use(Select);
@@ -170,10 +128,7 @@ export default {
       let nombres = '';
 
       this.table.dt.rows({ selected: true }).every(function () {
-        //TODO ESTO FUNCIONA MUY BIEN, EXCELENTE
         const row = this.data();
-        console.log(row);
-        // console.log(datos.indexOf(this.data()));
         let idx = datos.indexOf(this.data());
         nombres = `${datos[idx].nombre_departamento}`;
         let clave = datos[idx].id;
@@ -197,9 +152,7 @@ export default {
 
       if (identificador) {
         const ruta = 'parametros/departamentos/' + identificador + '/';
-        //const principal = '/docentes';
         confirmar1(identificador, nombres, ruta, this.principal);
-        //this.$router.push('/estudiante/edit/'+identificador+'/');
       } else {
         const error = 'Debes Seleccionar Un Departamento!';
         show_alerta(error, 'info')
@@ -213,39 +166,7 @@ export default {
           )
         );
     },
-    // getDocentess(id_doc,codigo_asignatura){
-
-    //   //console.log('aver'+id_doc);
-    //   if(id_doc===null)
-    //   {
-    //     return;
-    //   }else
-    //   if(id_doc!==null||id_doc!=='undefined'||id_doc!=='')
-    //   {      
-    //     console.log(id_doc + codigo_asignatura);
-    //   axios.get(BASE_URL+'/docentes/docentes/'+id_doc+'/').then(
-    //     response =>(                 
-    //       //revisar lo de fernando de objects
-    //       //this.docente = `${response.data['nombres']} ${response.data['apellidop']} ${response.data['apellidom']}`
-    //       this.docs[codigo_asignatura] = `${response.data['nombres']} ${response.data['apellidop']} ${response.data['apellidom']}`
-    //     )
-    //   ).catch(error => { 
-    //       console.log(error)
-    //       show_alerta(error,'error')
-    //     });
-    //   //console.log('mas:'+docs);
-    //   return this.docs[codigo_asignatura];
-    //   }
-    // }
     eliminar(id, nombre) {
-      //   for (let index = 0; index < 10; index++) {
-      //     sendRequest('POST',{
-      //     "id":999,
-      //     "nombre_provincia": "TEST-PROVINCIAS",
-      //     "id_departamento": null
-      // },'http://127.0.0.1:8000/parametros/provincias/','ProvinciaS Eliminada');              
-      //   }
-
       const ruta = 'parametros/departamentos/' + id + '/';
       confirmar1(id, nombre, ruta, this.principal);
       this.$router.push({ name: 'departamentos' })
@@ -254,9 +175,8 @@ export default {
 }
 </script>
 <style>
+/* estilos datatables */
 @import 'datatables.net-bs5';
-
-/*@import 'datatables.net-dt';*/
 @import 'datatables.net-responsive-dt';
 
 table.dtr-inline.collapsed>tbody>tr>td.dtr-control,
@@ -273,7 +193,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before { 
+table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
   content: "+";
   background-color: #31b131;
   background-color: #74a2ff;

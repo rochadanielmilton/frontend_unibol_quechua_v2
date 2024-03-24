@@ -30,7 +30,6 @@
 // @ is an alias to /src
 import { show_alerta, sendRequest } from "../../funciones";
 import { useRoute } from "vue-router";
-//import {ref,computed} from 'vue';
 import axios from 'axios';
 let BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -56,11 +55,9 @@ export default {
     getDepartamento() {
       axios.get(this.url).then(
         response => (
-          //revisar lo de fernando de objects           
           this.nombre_departamento = response.data['nombre_departamento']
         )
       ).catch(error => {
-        console.log(error)
         show_alerta(error, 'error')
       });
     },
@@ -72,7 +69,6 @@ export default {
         const parametros = {
           nombre_departamento: this.nombre_departamento
         }
-        //const parametros={nombre_provincia:this.nombre.trim()};
         await sendRequest('PUT', parametros, this.url, 'Departamento Actualizado Exitosamente!', this.principal);
         this.$router.push('/departamentos')
       }

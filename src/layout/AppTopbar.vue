@@ -23,10 +23,11 @@ onBeforeUnmount(() => {
 //DEFINICIONES PARA EL METODO LOGOUT DEL SISTEMA
 const { username, logout, authStatus } = useAuth();
 
+//borrado de variables globales en LocalStorage y limpieza del store del Usuario
 const onLogout = () => {
+
     logout()
     router.push({ name: 'login' })
-
 }
 
 const logoUrl = computed(() => {
@@ -77,25 +78,12 @@ const changeIdioma = () => {
     }
 };
 
-
-
-//  const logOut = () => {
-//     // //alert('Saliendo...');
-//     const { logout } = useAuth();
-//     return {
-//       onLogout: ()=>{
-//         router.push({name:'login'})
-//         logout()
-//       }
-//     }
-// }
 </script>
 
 
 <template>
     <div class="layout-topbar">
         <router-link to="/" class="layout-topbar-logo">
-            <!-- <img :src="logoUrl" alt="logo" /> -->
             <img :src="LOGO_UNI" alt="logo" />
             <span>SIMP'ARYSPA</span>
         </router-link>
@@ -110,31 +98,16 @@ const changeIdioma = () => {
 
         <div class="layout-topbar-menu" :class="topbarMenuClasses">
 
-            <!-- <button @click="changeIdioma()" class="p-link layout-topbar-button">
-                <i class="pi pi-user"></i>
-                <span>Idioma</span>
-            </button> -->
-
             <button @click="onLogout()" class="p-link layout-topbar-button">
-                 <i class="pi pi-sign-out"></i>Salir
+                <i class="pi pi-sign-out"></i>Salir
                 <span></span>
             </button>
-            <!-- <button @click="onTopBarMenuButton()" class="p-link layout-topbar-button">
-                <i class="pi pi-user"></i>
-                <span>Profile</span>
-            </button> -->
-
-            
-            <!-- <button @click="onSettingsClick()" class="p-link layout-topbar-button">
-                <i class="pi pi-cog"></i>
-                <span>Settings</span>
-            </button> -->
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.layout-topbar{
-background-color: #99D19B;
+.layout-topbar {
+    background-color: #99D19B;
 }
 </style>

@@ -1,57 +1,27 @@
-<!-- <script setup> -->
-<!-- import HelloWorld from './components/HelloWorld.vue' -->
-<!-- </script> -->
-
 <template>
-  <!-- <h1>
-    {{ authStatus }}
-  </h1> -->
-  <!-- <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" /> -->
-  <router-view/>
+  <router-view />
 </template>
 <script>
-  import useAuth from './modules/auth/composables/useAuth';
+import useAuth from './modules/auth/composables/useAuth';
 
-  export default {
-    name:'App',
-    data(){
+export default {
+  name: 'App',
+  data() {
     return {
-      //isAuthenticated:false
+
     }
-   },
-   setup(){
-    const { authStatus,checkAuthStatus } = useAuth();
+  },
+  setup() {
+    const { authStatus, checkAuthStatus } = useAuth();
     //LLAMANDO A LA VERIFICACION SI EL USUARIO TIENE UN IDTOKEN VALIDO
-    checkAuthStatus(); 
+    //si tiene ingresa al Sistema sino redirige al Login de Usuario
+    checkAuthStatus();
     return {
+      //estado del Usuario:authenticated, 'non-authenticated'
       authStatus
     }
-   }
-    // components:{
-    //   MyCounter:defineAsyncComponent(()=>import('@/components/MyCounter.vue'))
-    // }
   }
+}
 </script>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>

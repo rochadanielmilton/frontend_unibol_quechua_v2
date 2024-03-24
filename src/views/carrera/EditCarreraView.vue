@@ -94,21 +94,16 @@ export default {
     async guardar() {
       event.preventDefault();
       if (this.nombre_carrera.trim() === '') {
-        show_alerta('El nombre no puede ser vacio', 'warning', 'nombre');
+        show_alerta('El nombre no puede ser vacio', 'warning');
       } else {
 
         const parametros = {
           codigo_carrera: this.codigo_carrera,
           nombre_carrera: this.nombre_carrera,
           descripcion: this.descripcion,
-
           estado: this.estado,
         };
 
-
-
-        //const parametros={nombre_provincia:this.nombre.trim()};
-        //const principal = '/carreras';
         await sendRequest('PUT', parametros, this.url, 'Carrera Actualizada Exitosamente!', this.principal);
         this.$router.push('/carreras')
       }
