@@ -3,40 +3,11 @@
   <div class="container">
     <div class="row">
       <div class="mb-3 fw-bold">
-        <!-- <div class="mb-3 col-lg-10 offset-1"> -->
-        <!-- <button class="btn btn-outline-success col-2 float-end">
-            <i class="fa-solid fa-table"></i> <router-link to="/estudiante/curso-preparatorio"
-              class="nav-link active">ESTUDIANTES-PREPARATORIO</router-link>
-          </button> &nbsp; -->
-        <!-- </div> -->
 
         <div class="mb-3 fs-4 text-center">
           PLANILLA DE ESTUDIANTES REGULARES HABILITADOS PARA LA INSCRIPCION:
         </div>
 
-        <!-- <div class=" mb-3">                 
-              APELLIDOS Y NOMBRES:    {{`${apellidoP} ${apellidoM} ${nombres}`}}
-            </div>
-            
-            <div class=" mb-3">                 
-              CEDULA DE IDENTIDAD:     {{`${ci_estudiante}`}}
-            </div>
-
-            <div class=" mb-3">                 
-              NRO DE REGISTRO:       {{`${numero_registro}`}}
-            </div>
-
-            <div class=" mb-3">                 
-              CARRERA:         {{`${nombre_carrera}`}}
-            </div>
-
-            <div class=" mb-3">                 
-              APELLIDOS Y NOMBRES:      {{`${apellidoP} ${apellidoM} ${nombres}`}}
-            </div>
-
-            <div class=" mb-3">                 
-              FECHA DE EMISION :         {{`${fecha_emision}`}}
-            </div> -->
 
       </div>
     </div>
@@ -45,10 +16,7 @@
       <div class="mb-3">
         <!-- <div class="d-flex justify-content-around ">         -->
         <div class="mb-3 d-grid gap-2 d-md-block">
-          <!-- <button class="btn btn-success float-end">
-            <i class="fa-solid fa-table"></i> <router-link to="/curso-preparatorio"
-              class="nav-link active">ESTUDIANTES-PREPARATORIO</router-link>
-          </button> -->
+
           <div class="mb-3 d-grid gap-2 d-md-block">
             <button class="btn btn-success  me-1" @click="inscribirEstudiante">
               <i class="fa-solid fa-user-plus"></i>INSCRIBIR
@@ -67,10 +35,6 @@
 
 
     <div class="row">
-      <!-- <div class="col-lg-12 col-sm-12 offset-lg-2 align-center"> -->
-      <!-- <div class="col-lg-12 col-sm-12 align-center"> -->
-      <!-- <div class="col-lg-10 offset-lg-1">
-        <div class="table-responsive text-center"> -->
       <div class="table-responsive">
         <DataTable ref="table" id="datatable" :data="estudiantes" :columns="columns" v-if="estudiantes"
           class="table table-bordered table-striped display small" :options="{
@@ -115,47 +79,7 @@
             </tr>
           </thead>
           <tbody class="table-group-divider" id="contenido" :key="keycon">
-            <!--  <tr v-for="(estudiante, i) in estudiantes" :key="i" :id="estudiante.ci_estudiante">
-        <td>{{ i+1 }}</td>
-        <td v-if="estudiante.ci_especial">{{ `${estudiante.ci_estudiante} ${estudiante.ci_especial} `}}</td>        
-        <td v-else>{{ estudiante.ci_estudiante }}</td> 
-        <td>{{ estudiante.apellidoP }}</td>
-        <td>{{ estudiante.apellidoM }}</td>
-        <td>{{ `${estudiante.apellidoP} ${estudiante.apellidoM} ${estudiante.nombres} `}}</td>
-        <td>{{ estudiante.codigo_carrera }}</td>
-        <td>{{ estudiante.nombre_carrera }}</td>
-        <td>{{ estudiante.numero_registro }}</td>
-        <td>{{ estudiante.numero_boleta }}</td>
-        <td>{{ estudiante.anio_cursado }}</td>
-        <td>
-  <div class="btn-group" role="group">
-    <router-link :to="{path:'/estudiante/ofertas/'+estudiante.ci_estudiante}" class="btn btn-success btn-sm" v-if="estudiante.inscrito_gestion=='no'" :key="keycon">
-      INSCRIBIR
-    </router-link>
-    <button class="btn btn-success btn-sm disabled" v-else>
-      INSCRITO
-    </button>    
-    <button class="btn btn-info btn-sm" v-if="estudiante.anio_ingreso===this.anio_actual && estudiante.inscrito_gestion=='si'" @click="reimpresionNuevos(estudiante.ci_estudiante)">
-      REIMP.-N
-    </button>
-    <button class="btn btn-info btn-sm" v-if="estudiante.anio_ingreso!==this.anio_actual && estudiante.inscrito_gestion=='si'" @click="reimpresionRegulares(estudiante.ci_estudiante)">
-      REIMP.-R
-    </button>
-    <button class="btn btn-danger btn-sm" v-if="estudiante.inscrito_gestion=='si'" @click="consultaAnularInscripcion(estudiante.ci_estudiante, `${estudiante.nombres} ${estudiante.apellidoP} ${estudiante.apellidoM}`)">
-      ANULAR-INS.
-    </button>
-    <button class="btn btn-info btn-sm" v-if="estudiante.anio_ingreso===this.anio_actual && estudiante.inscrito_gestion=='no'" @click="inscripcionDirecta(estudiante.ci_estudiante, `${estudiante.nombres} ${estudiante.apellidoP} ${estudiante.apellidoM}`)">
-      INS-DIRECTA
-    </button>
-    <button class="btn btn-info btn-sm" v-if="sexto_anio" @click="inscripcionSextoAnio(estudiante.ci_estudiante, `${estudiante.nombres} ${estudiante.apellidoP} ${estudiante.apellidoM}`)">
-      INSCRIBIR-6TO
-    </button>
-    
-  </div>
-</td>
-
-
-      </tr> -->
+ 
           </tbody>
         </DataTable>
         <div v-else>

@@ -111,53 +111,17 @@
               <th>
                 HOMOL.
               </th>
-              <!-- <th>
-                        INS. DE APR.
-                      </th>         
-                      <th>
-                        OBSERVACION
-                      </th>                                            
-                      <th>
-                        ACCIONES
-                      </th> -->
+
             </tr>
           </thead>
           <tbody class="table-group-divider" id="contenido">
-            <!-- <tr v-for="materia, i  in materias" :key="materia">
-                <td>{{ i + 1 }}</td>
-                <td>{{ materia.anio_cursado }}</td>
-                <td>{{ materia.codigo_asignatura }}</td>
-                <td>{{ materia.convalidacion }}</td>
-                <td>{{ materia.homologacion }}</td>
-                <td>{{ materia.nombre_asignatura }}</td>
-                <td>{{ materia.total_horas }}</td>
-                <td>{{ materia.pre_requisitos }}</td>
-                <td>{{ materia.nota_num_final }}</td>
-                <td>{{ materia.estado_gestion_espaniol }}</td> -->
-            <!-- <td></td>
-                        <td></td> -->
-            <!-- <td>{{ estudiante.nombre_asignatura }}</td> -->
-            <!-- <td >{{ estudiante.id_docente }}</td> -->
 
-            <!-- <td >{{ estudiante.estado_gestion_espaniol }}</td> -->
-            <!--  <td>{{ getCarrera(estudiante.id_carrera) }}</td> -->
-            <!-- <td>{{ estudiante.nota_num_final }}</td> -->
-
-
-            <!-- <td>                                                                                 
-                            <button   class="btn btn-warning" @click="clickMe"> -->
-            <!-- <i class="fa-solid fa-file-pdf"></i> -->
-            <!-- </button>                         
-                        </td> -->
-            <!-- </tr> -->
           </tbody>
         </DataTable>
         <!-- </div> -->
       </div>
     </div>
-    <!-- </div> -->
-    <!-- <b-table striped hover :items="materias">
-    </b-table> -->
+
   </div>
 </template>
 
@@ -254,21 +218,7 @@ export default {
   methods: {
 
     async exportPDF() {
-      //first try
-      //parameters:orientation,unit,format
-      // const doc = new jsPDF('p', 'pt', 'A4');
 
-
-      //   let pdfName = 'test';                     
-      //   doc.text(`Hello Students:
-
-      //     ${this.estudiantes[0].nombre_carrera}                   
-
-      //     `, 10, 100);
-      //   doc.save(pdfName + '.pdf');
-
-      //second try
-      //const doc = new jsPDF({unit: 'px'});
       const doc = new jsPDF({ orientation: 'p', unit: 'px', format: 'letter' });
       //const doc = new jsPDF('l','px,','letter');
       doc.setFontSize(12);
@@ -356,73 +306,7 @@ export default {
       doc.setTextColor(10);
       doc.setFontSize(15);
 
-      // doc.text(`
-      //   Primer comentario                                        
-      //    `, 10, setY);
-
       let finalY = doc.lastAutoTable.finalY || 10
-
-      //doc.addImage("https://picsum.photos/200", "JPEG", doc.internal.pageSize.width-80, finalY+20, 50, 50);
-
-      //await doc.addImage("../../logotipo-unibol-quechua.png", "PNG", doc.internal.pageSize.width-80, finalY+20, 50, 50);
-      //await doc.addImage("../../caracteristicas-bosques-tropicales.jpg", "JPG", 30, finalY+20, 50, 50);
-
-      //<!-- -->
-      //PRIMER EJEMPLO DE PRUEBA EXITOSO
-      // doc.text(`
-      //    HISTORIAL ACADEMICO DE AVANCE GENERAL                                                      
-      //    `, 20, finalY);
-      //                   //finalY+=25;    
-      //    finalY+=20;    
-      // //SETEAMOS EL TAMAÑO DE LETRA PARA COLOCAR LOS DATOS
-      // doc.setFontSize(10);
-      // doc.text(`                            
-      //    APELLIDOS Y NOMBRES: ${this.apellidoP} ${this.apellidoM} ${this.nombres}                                  
-      //    CEDULA DE IDENTIDAD: ${this.ci_estudiante}
-      //    NRO DE REGISTRO: ${this.numero_registro}
-      //    CARRERA: ${this.nombre_carrera}
-      //    FECHA DE EMISION: ${this.fecha_emision}
-      //    NIVEL DE FORMACION: ${this.grado}
-      //    `,80, finalY);
-      //    finalY+=35;     
-
-      //INICIANDO LOS ENCABEZADOS Y FORMATO DE PRESENTACION
-      // await doc.addImage(MINISTERIO, 'JPG', 15, finalY + 5, 60, 60);
-      // await doc.addImage(LOGO_UNI, 'PNG', doc.internal.pageSize.width - 65, finalY + 5, 50, 50);
-
-
-      // // await doc.addImage("../../ministerio.jpg", "JPG", 15, finalY + 5, 60, 60);
-      // // await doc.addImage("../../logotipo-unibol-quechua.png", "PNG", doc.internal.pageSize.width - 65, finalY + 5, 50, 50);
-
-      // doc.setTextColor(10);
-      // doc.setFontSize(10).setFont(undefined, 'bold');
-      // doc.setTextColor(18, 73, 39);
-      // doc.text(`
-      //                  UNIVERSIDAD INDÍGENA BOLIVIANA COMUNITARIA INTERCULTURAL PRODUCTIVA
-      //                  UNIBOL QUECHUA "CASIMIRO HUANCA"
-      //                  `, (doc.internal.pageSize.getWidth() / 2) - 20, finalY, null, null, "center");
-      // //finalY+=25;    
-      // //añadimos 20+50 por el tamaño de las imagenes
-      // finalY += 20;
-
-      // doc.setTextColor(100);
-      // doc.setFontSize(8).setFont(undefined, 'normal');
-      // doc.text(`
-      //                  Decreto Supremo N° 29664 de 2 de agosto de 2008 - Decreto Supremo N° 3079 del 8 de febrero 2017
-      //                  R.M. 505/2013 - R.M. 1300/2018"
-      //                  `, (doc.internal.pageSize.getWidth() / 2) - 20, finalY, null, null, "center");
-      // //finalY+=25;    
-      // //añadimos 20+50 por el tamaño de las imagenes
-      // finalY += 20;
-
-      // doc.setTextColor(10);
-      // doc.setFontSize(8);
-      // doc.text(`
-      //                  Tukuy sunquwan yahcyaninchikta, ruwayninchikta, yuyayninchikta kallpachaspa sumaq kawsayman kutina                       
-      //                  `, (doc.internal.pageSize.getWidth() / 2) - 5, finalY, null, null, "center");
-      // //finalY+=25;    
-      // //añadimos 20+50 por el tamaño de las imagenes
-      // finalY += 15;
 
       finalY += 65;
 
@@ -465,11 +349,6 @@ export default {
                        FECHA DE EMISIÓN: 
                        NIVEL DE FORMACIÓN: 
                        `, 10, finalY);
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
-      //finalY+=35; 
-      //SETEAMOS EL TAMAÑO DE LETRA PARA COLOCAR LOS DATOS
-      //doc.setFontSize(9);
 
       doc.setTextColor(100);
       doc.text(`
