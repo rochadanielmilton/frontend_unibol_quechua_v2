@@ -6,7 +6,7 @@
       <div class="mb-3 fw-bold  normal-letter">
 
         <div class="mb-3 fs-5 text-center">
-          HISTORIAL ACADÉMICO 
+          HISTORIAL ACADÉMICO DE AVANCE GENERAL
         </div>
 
         <div class="  fs-6">
@@ -91,7 +91,7 @@
               <!-- <th>
                   SIGLA CONV.
                 </th> -->
-              
+
               <th>
                 ASIGNATURA
               </th>
@@ -441,7 +441,7 @@ export default {
       // //finalY+=25;    
       // //añadimos 20+50 por el tamaño de las imagenes
       // finalY += 10;
-      
+
 
       doc.setTextColor(10);
       doc.setFontSize(6).setFont(undefined, 'bold');
@@ -495,8 +495,8 @@ export default {
         tableLineColor: [0, 0, 0], tableLineWidth: 0.2,
         styles: { fontSize: 6, halign: 'center' },
         bodyStyles: { lineWidth: 0.2, lineColor: [0, 0, 0] },
-        margin: { left:50,top: 105 },
-        padding: 2                      
+        margin: { left: 50, top: 105 },
+        padding: 3
       })
 
       finalY = doc.lastAutoTable.finalY
@@ -520,8 +520,8 @@ export default {
           1: { columnWidth: 'auto' }
         },
         tableWidth: doc.internal.pageSize.getWidth() / 3,
-        margin: { left: margin - 20, right: margin,top: 105 },
-        padding: 2           
+        margin: { left: margin - 20, right: margin, top: 105 },
+        padding: 2
         //columnStyles:{color}
 
       });
@@ -673,7 +673,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before { 
+table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
   content: "+";
   background-color: #31b131;
   background-color: #74a2ff;

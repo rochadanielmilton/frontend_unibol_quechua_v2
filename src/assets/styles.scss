@@ -1,10 +1,11 @@
-//LAYOUT FORM SAKAI
+//LAYOUT FROM SAKAI
 @import '@/assets/layout/layout.scss';
 /* PrimeVue */
 // @import 'primevue/resources/primevue.min.css'; // version deplicated. You must open the command line if you are using < 3.29.00
 @import 'primeflex/primeflex.scss';
 @import 'primeicons/primeicons.css';
 
+//estilos para los datatables en version mobile
 table.dtr-inline.collapsed>tbody>tr>td.dtr-control,
 table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control {
   position: relative;
@@ -40,6 +41,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
   background-color: #31b131;
   background-color: #74a2ff;
 }
+
 // .btn-success,
 // .btn-success:hover,
 // .btn-success:active,
@@ -48,29 +50,32 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
 //     background-color: #157DEC;
 //     border-color: #157DEC; 
 // }
-.btn-success:hover{
+.btn-success:hover {
   background-color: white;
-    border-color: green;
-    color: green;
-    /* #ECF7ED */
+  border-color: green;
+  color: green;
+  /* #ECF7ED */
 }
-.no-habil{
+
+.no-habil {
   display: none;
 }
 
-@media (max-width: 767px){
-    .fs-6{
+@media (max-width: 767px) {
+  .fs-6 {
     font-size: .875rem !important;
     line-height: 1.25rem;
   }
-  .input-group{
-    font-size:  .775rem !important;
+
+  .input-group {
+    font-size: .775rem !important;
   }
-  .habil
-  {
+
+  .habil {
     display: none;
   }
-  .no-habil{
+
+  .no-habil {
     display: inline-block;
   }
 }

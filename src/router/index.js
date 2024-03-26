@@ -1,111 +1,37 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import AppLayout from '@/layout/AppLayout.vue';
 //IMPORTACION DEL AUTH
 import authRouter from '../modules/auth/router'
 import isAuthenticatedGuard from '@/modules/auth/router/auth-guard'
 
-
-// export const RouteNames = {
-//   HOME: 'home',
-//   ABOUT: 'about',
-// }
-
-// const routes = [
-//   {
-//     path:'/',
-//     component:AppLayout,
-//     children:[
-//       {
-//         path: '/',
-//         //name: RouteNames.HOME,
-//         name:'home',
-//         component: HomeView
-//       },
-//       {
-//         path: '/about',
-//         name: RouteNames.ABOUT,
-//         // route level code-splitting
-//         // this generates a separate chunk (about.[hash].js) for this route
-//         // which is lazy-loaded when the route is visited.
-//         component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-//       },
-//       {
-//         path: '/estudiantes',
-//         //name: RouteNames.HOME,
-//         name:'estudiantes',
-//         component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante_/EstudianteView.vue')
-//       },
-//     ]
-//   }
-// ]
-// const routes = [
-//   {
-//     path: '/',
-//     name: RouteNames.HOME,
-//     component: HomeView
-//   },
-//   {
-//     path: '/about',
-//     name: RouteNames.ABOUT,
-//     // route level code-splitting
-//     // this generates a separate chunk (about.[hash].js) for this route
-//     // which is lazy-loaded when the route is visited.
-//     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-//   }
-// ]
-
 const router = createRouter({
 
-  //history: createWebHistory(process.env.BASE_URL),
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       component: AppLayout,
       children: [
-        //agregar el perfil de administrador
-        // {
-        //   path: '/',
-        //   //name: RouteNames.HOME,
-        //   name: 'home',
-        //   component: HomeView
-        // },
         {
           path: '/',
           redirect: '/estudiantes'
         },
         {
-          path: 'about',
-          //name: RouteNames.ABOUT,
-          name: 'about',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-        },
-        {
           path: 'curso-preparatorio',
-          //name: RouteNames.HOME,
           name: 'curso-preparatorio',
           beforeEnter: [isAuthenticatedGuard],
-          //component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante_/EstudianteView.vue')                                      
           component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante/EstudianteCursoPreparatorioView.vue')
         },
         {
           path: 'estudiantes',
-          //name: RouteNames.HOME,
           name: 'estudiantes',
           beforeEnter: [isAuthenticatedGuard],
-          //component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante_/EstudianteView.vue')                                      
           component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante/EstudianteView.vue')
         },
         {
           path: 'estudiante/edit/:id',
-          //name: RouteNames.HOME,
           name: 'editarestudiante',
           beforeEnter: [isAuthenticatedGuard],
-          //component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante_/EstudianteView.vue')                                      
           component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante/EditEstudianteView.vue')
         },
         {
@@ -116,18 +42,15 @@ const router = createRouter({
         },
         {
           path: 'habilitados-regulares',
-          //name: RouteNames.HOME,
+
           name: 'habilitados-regulares',
           beforeEnter: [isAuthenticatedGuard],
-          //component: () => import(/* webpackChunkName: "estudiantes-regulares" */ '../views/estudiante_/EstudianteView.vue')                                      
           component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante/HabilitadosRegularesEstudianteView.vue')
         },
         {
           path: 'habilitados-nuevos',
-          //name: RouteNames.HOME,
           name: 'habilitados-nuevos',
           beforeEnter: [isAuthenticatedGuard],
-          //component: () => import(/* webpackChunkName: "estudiantes-nuevos" */ '../views/estudiante_/EstudianteView.vue')                                      
           component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante/HabilitadosNuevosEstudianteView.vue')
         },
         {
@@ -145,77 +68,60 @@ const router = createRouter({
         {
           path: '/estudiante/historial-anual/:id',
           name: 'estudiantesanual',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
           component: () => import(/* webpackChunkName: "historial-anual" */ '../views/estudiante/HistorialAnualView.vue')
         },
         {
           path: '/estudiante/historial-avance-general/:id',
           name: 'estudiantesavancegeneral',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
           component: () => import(/* webpackChunkName: "dosmas" */ '../views/estudiante/HistorialAvanceGeneralView.vue')
         },
         {
           path: '/perfil-estudiante/:id',
-          //name: RouteNames.HOME,
           name: 'perfil-estudiante',
           beforeEnter: [isAuthenticatedGuard],
-          //component: () => import(/* webpackChunkName: "estudiantes-nuevos" */ '../views/estudiante_/EstudianteView.vue')                                      
           component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante/PerfilEstudiante2View.vue')
         },
         {
           path: '/estudiante/organizacion/:id',
-          //name: RouteNames.HOME,
           name: 'organizacion-estudiante',
           beforeEnter: [isAuthenticatedGuard],
-          //component: () => import(/* webpackChunkName: "estudiantes-nuevos" */ '../views/estudiante_/EstudianteView.vue')                                      
           component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante/EditOrganizacionView.vue')
         },
         {
           path: '/estudiante/educacion/:id',
-          //name: RouteNames.HOME,
           name: 'educacion-estudiante',
           beforeEnter: [isAuthenticatedGuard],
-          //component: () => import(/* webpackChunkName: "estudiantes-nuevos" */ '../views/estudiante_/EstudianteView.vue')                                      
           component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante/EditEducacionView.vue')
         },
         {
           path: '/estudiante/responsable/:id',
-          //name: RouteNames.HOME,
           name: 'responsable-estudiante',
           beforeEnter: [isAuthenticatedGuard],
-          //component: () => import(/* webpackChunkName: "estudiantes-nuevos" */ '../views/estudiante_/EstudianteView.vue')                                      
           component: () => import(/* webpackChunkName: "estudiantes" */ '../views/estudiante/EditResponsableView.vue')
         },
         {
           path: '/reportes-generales',
           name: 'reportes',
           beforeEnter: [isAuthenticatedGuard],
-          //component: DocenteView
           component: () => import(/* webpackChunkName: "docentes" */ '../views/reportes/ReportesGeneralesView.vue')
         },
         {
           path: '/reporte/reporte-carrera',
           name: 'reportescarrera',
           beforeEnter: [isAuthenticatedGuard],
-          //component: DocenteView
           component: () => import(/* webpackChunkName: "docentes" */ '../views/reportes/ReportesCarreraView.vue')
         },
         {
           path: '/reporte/reporte-genero',
           name: 'reportesgenero',
           beforeEnter: [isAuthenticatedGuard],
-          //component: DocenteView
           component: () => import(/* webpackChunkName: "docentes" */ '../views/reportes/ReportesGeneroView.vue')
         },
         {
           path: '/reporte/reporte-departamento',
           name: 'reportesdepartamento',
           beforeEnter: [isAuthenticatedGuard],
-          //component: DocenteView
           component: () => import(/* webpackChunkName: "docentes" */ '../views/reportes/ReportesDepartamentoView.vue')
         },
         {
@@ -347,13 +253,9 @@ const router = createRouter({
         },
         {
           path: '/:pathMatch(.*)*',
-          //AQUI DEBBERIA IR EL NOT FOUND PAGE
-          //component: () => import(/* webpackChunkName: "edit-idioma" */ '../views/idioma/EditOriginarioView.vue')
+          //AQUI DEBBERIA IR HACIA EL "NOT FOUND PAGE"          
           redirect: '/estudiantes'
         },
-
-
-
       ],
     },
     {
@@ -364,4 +266,3 @@ const router = createRouter({
 })
 
 export default router
-

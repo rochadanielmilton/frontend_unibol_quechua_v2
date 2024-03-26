@@ -2,7 +2,7 @@
   <div class="row mt-3">
     <div class="col-md-6 offset-md-3">
       <div class="card">
-        <div class="card-header bg-dark text-white text-center">
+        <div class="card-header bg-secondary text-white text-center">
           EDITAR IDIOMA
         </div>
         <div class="card-body">

@@ -1,53 +1,32 @@
 <template>
   <div class="container ">
-    <!-- <div class="row">
-      <div class="mb-3">
-        <div class="d-grid col-6-mx-auto offset-md-9">
-          <button class="btn btn-success">
-            <router-link to="/docente/create" class="nav-link active" href="#">Nuevo Docente</router-link> &nbsp;<i
-              class="fa-solid fa-graduation-cap"></i>
-          </button>
-        </div>
-
-      </div>
-    </div> -->
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
         <div class="mb-3 fw-bold ">
 
           <div class="mb-3 fs-5 text-center">
             LISTA DE DOCENTES:
-          </div>          
+          </div>
 
         </div>
       </div>
     </div>
     <div class="row">
       <div class="mb-3">
-        <!-- <div class="d-flex justify-content-around ">         -->
         <div class="mb-3 d-grid gap-2 d-md-block">
-
-          <button class="btn btn-outline-success  float-end ">
-            <i class="fa-solid fa-user-plus"></i> <router-link to="/docente/create" class="nav-link active">NUEVO
+          <button class="btn btn-success  float-end ">
+            <router-link to="/docente/create" class="nav-link active"><i class="fa-solid fa-user-plus"></i>NUEVO
               DOCENTE</router-link>
           </button>
-          <button class="btn btn-outline-warning rounded   me-1" @click="editarSeleccionado()">
+          <button class="btn btn-warning rounded   me-1" @click="editarSeleccionado()">
             Editar
             <i class="fa-solid fa-user-plus"></i>
           </button>
-          <button class="btn btn-danger  rounded   me-1" @click="eliminarSeleccionado()">
-            Eliminar
-            <i class="fa-solid fa-trash"></i>
-          </button>
-
         </div>
       </div>
     </div>
     <div class="row">
-      <!-- <div class="col-lg-12 col-sm-12 offset-lg-2 align-center"> -->
-      <!-- <div class="col-lg-12 col-sm-12 align-center"> -->
       <div class="table-responsive">
-        <!-- <table class="table table-bordered table-hover table-striped col-12"> -->
         <DataTable ref="table" id="datatable" :data="docentes" :columns="columns" v-if="docentes"
           class="table table-bordered table-striped display small" :options="{
             select: true, responsive: true, autoWidth: true, dom: 'Bfrtip',
@@ -56,7 +35,6 @@
               text: 'Edit',
               name: 'edit'
             }], pageLength: 5,
-            //responsivePriority: 1,                                                   
             columnDefs: [{
               width: '40%', target: [6],
               width: '10%', target: [7],
@@ -68,7 +46,7 @@
             ],
             language: {
               search: 'Buscar', zeroRecords: 'No hay registros que mostrar',
-              info: 'Mostrando desde _START_ a _END_ de _TOTAL_ registros',              
+              info: 'Mostrando desde _START_ a _END_ de _TOTAL_ registros',
               infoFiltered: '(Filtrados de _MAX_ registros)',
               paginate: { first: 'Primero', previous: 'Anterior', next: 'Siguiente', last: 'Ultimo' }
             },
@@ -94,9 +72,6 @@
                 CELULAR
               </th>
               <th>
-                DIRECCIÓN
-              </th>
-              <th>
                 PROFESIÓN
               </th>
               <th>
@@ -109,36 +84,9 @@
               <th>
                 ESTADO
               </th>
-              <!-- <th>
-                        ACCIONES
-                      </th> -->
             </tr>
           </thead>
-          <!-- <div v-else>
-            <img :src="ruta" alt="iamgen">
-          </div> -->
           <tbody class="table-group-divider" id="contenido">
-            <!-- <tr v-for="docente in docentes" :key="docente.id">
-
-              <td>{{ docente.nombres }}</td>
-              <td>{{ docente.apellidop }}</td>
-              <td>{{ docente.apellidom }}</td>
-
-              <td>{{ docente.ci }}</td>
-
-              <td>{{ docente.celular }}</td>
-              <td>{{ docente.direccion }}</td>
-              <td>{{ docente.profesion }}</td>
-              <td>{{ docente.estado }}</td>
-              <td>
-                <router-link :to="{ path: '/docente/edit/' + docente.id }" class="btn btn-outline-warning">
-                  <i class="fa-solid fa-edit"></i>
-                </router-link> &nbsp;
-                <button class="btn btn-outline-danger" v-on:click="eliminar(docente.id, docente.nombres)">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr> -->
           </tbody>
         </DataTable>
         <div v-else>
@@ -151,7 +99,6 @@
             </div>
           </div>
         </div>
-        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -163,45 +110,32 @@ import { ref } from 'vue';
 import axios from "axios";
 import { confirmar1, show_alerta } from '../../funciones';
 
-
+//librerias para el uso de Datatable
 import DataTable from 'datatables.net-vue3';
 import DataTableLib from 'datatables.net-bs5';
 import Select from "datatables.net-select";
 import 'datatables.net-responsive-bs5';
-//import 'datatables.net-select';
 
 DataTable.use(DataTableLib);
 DataTable.use(Select);
 
-
-//import {ref} from 'vue';
-// const provincias = computed(()=>{
-//         return this.provincias = this.getProvincias()
-// })
-//const provincias = ref([]);
-//const contador =ref(0);
-//let BASE_URL = process.env.VUE_APP_BASE_URL;
+//definicion de variable global para el consumo de servicios API-REST
 let BASE_URL = import.meta.env.VITE_BASE_URL;
 export default {
   components: { DataTable },
-  name: 'DocenteView',
+  name: 'DocenteDataView',
   data() {
     return {
       docentes: null,
       ruta: '../loading.gif',
       principal: '/docentes',
       columns: [
-        // {
-        //   data: null, render: function (data, type, row, meta) { return `${meta.row + 1}` }
-        // },
         { data: 'id' },
         { data: 'nombres' },
-        //{ data: null, render: function (data) { return `${data.apellidoP} ${data.apellidoM} ${data.nombres}` } },
         { data: 'apellidop' },
         { data: 'apellidom' },
         { data: 'ci' },
         { data: 'celular' },
-        { data: 'direccion' },
         { data: 'profesion' },
         { data: 'correo' },
         { data: 'numero_item' },
@@ -218,6 +152,7 @@ export default {
     }
   },
   mounted() {
+    //obtencion de docentes
     this.getDocentes();
   },
   methods: {
@@ -230,16 +165,16 @@ export default {
         );
 
     },
+    //verificar que se haya seleccionado un docente para su edicion u eliminacion
     verificarSeleccion() {
       let datos = this.docentes;
       let identificador = '';
       let nombres = '';
 
       this.table.dt.rows({ selected: true }).every(function () {
-        //TODO ESTO FUNCIONA MUY BIEN, EXCELENTE
+
         const row = this.data();
-        console.log(row);
-        // console.log(datos.indexOf(this.data()));
+
         let idx = datos.indexOf(this.data());
         nombres = `${datos[idx].nombres} ${datos[idx].apellidop} ${datos[idx].apellidom}`;
         let clave = datos[idx].id;
@@ -263,23 +198,13 @@ export default {
       const { identificador, nombres } = this.verificarSeleccion();
       if (identificador) {
         const ruta = 'docentes/docentes/' + identificador + '/';
-        //const principal = '/docentes';
         confirmar1(identificador, nombres, ruta, this.principal);
-        //this.$router.push('/estudiante/edit/'+identificador+'/');
       } else {
         const error = 'Debes Seleccionar Un Estudiante!';
         show_alerta(error, 'info')
       }
     },
     eliminar(id, nombre) {
-      //   for (let index = 0; index < 10; index++) {
-      //     sendRequest('POST',{
-      //     "id":999,
-      //     "nombre_provincia": "TEST-PROVINCIAS",
-      //     "id_departamento": null
-      // },'http://127.0.0.1:8000/parametros/provincias/','ProvinciaS Eliminada');              
-      //   }
-
       //linea adicional recientemente añadida
       const principal = '/docentes';
       const ruta = 'docentes/docentes/' + id + '/';
@@ -289,9 +214,8 @@ export default {
 }
 </script>
 <style>
+/* estilos datatables */
 @import 'datatables.net-bs5';
-
-/*@import 'datatables.net-dt';*/
 @import 'datatables.net-responsive-dt';
 
 table.dtr-inline.collapsed>tbody>tr>td.dtr-control,
@@ -308,7 +232,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before { 
+table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
   content: "+";
   background-color: #31b131;
   background-color: #74a2ff;

@@ -14,7 +14,6 @@
               </div>
               <div :value="codigo_carrera" id="codigo_carrera"
                 class="input-group mb-3 d-inline p-2 bg-primary text-white rounded">{{ codigo_carrera }}</div>
-              <!-- <input type="text" v-model="codigo_carrera" id="codigo_carrera" class="form-control" maxlength="50" placeholder="Codigo Carrera" required>               -->
             </div>
 
 
@@ -55,11 +54,12 @@
 // @ is an alias to /src
 import { show_alerta, sendRequest } from "../../funciones";
 import { useRoute } from "vue-router";
-//import {ref,computed} from 'vue';
+
 import axios from 'axios';
+//variable global para el consumo de servicios API-REST
 let BASE_URL = import.meta.env.VITE_BASE_URL;
 export default {
-  name: 'EditDocenteView',
+  name: 'EditCarreraView',
   data() {
     return {
       id: 0, codigo_carrera: '', nombre_carrera: '', descripcion: '', estado: '',
@@ -69,9 +69,11 @@ export default {
   },
   mounted() {
     const route = useRoute();
+    //obtencion del codigo de carrera para su edicion
     this.id = route.params.id;
 
     this.url = this.url + '/' + this.id + '/';
+    //obtencion de la Carrera seleccionada
     this.getCarrera();
     this.principal = '/carreras';
   },
@@ -79,8 +81,6 @@ export default {
     getCarrera() {
       axios.get(this.url).then(
         response => (
-          console.log(response),
-          //revisar lo de fernando de objects
           this.codigo_carrera = response.data['codigo_carrera'],
 
           this.nombre_carrera = response.data['nombre_carrera'],
@@ -91,24 +91,20 @@ export default {
       );
     }
     ,
+    //metodo para guardar la edicion de Una Carrera
     async guardar() {
       event.preventDefault();
       if (this.nombre_carrera.trim() === '') {
-        show_alerta('El nombre no puede ser vacio', 'warning', 'nombre');
+        show_alerta('El nombre no puede ser vacio', 'warning');
       } else {
 
         const parametros = {
           codigo_carrera: this.codigo_carrera,
           nombre_carrera: this.nombre_carrera,
           descripcion: this.descripcion,
-
           estado: this.estado,
         };
 
-
-
-        //const parametros={nombre_provincia:this.nombre.trim()};
-        //const principal = '/carreras';
         await sendRequest('PUT', parametros, this.url, 'Carrera Actualizada Exitosamente!', this.principal);
         this.$router.push('/carreras')
       }

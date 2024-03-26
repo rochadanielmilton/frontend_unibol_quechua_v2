@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 let docentes_ = [];
-//let BASE_URL=process.env.VUE_APP_BASE_URL;
+//variable global para el acceso de endpoints
 let BASE_URL = 'http://127.0.0.1:8000';
 
 export function show_alerta(mensaje, icono, foco = '') {
@@ -70,17 +70,10 @@ export function confirmar1(id, nombre, ruta, principal = '/') {
         }
     })
 }
+
+//metodo para preguntar si se desea inscribir a un Estudiante del Curso Preparatorio
 export async function confirmarRegistroP(ci_postulante, nombre) {
     const url = BASE_URL + '/administracion/registrarNueboEstudiante/' + ci_postulante + '/';
-    // let complemento_ruta =ruta.split('/')[0];
-    // if(complemento_ruta==='parametros')
-    // {   
-    //     complemento_ruta =ruta.split('/')[1];
-    // }
-    // const resumido = complemento_ruta.charAt(0).toUpperCase()+complemento_ruta.slice(1);
-    // const nombre_ruta= resumido.substring(0,resumido.length -1);
-
-
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: { confirmButton: 'btn btn-success me-3', cancelButton: 'btn btn-danger' },
@@ -104,15 +97,6 @@ export async function confirmarRegistroP(ci_postulante, nombre) {
 }
 export async function inscripcionDirectaN(ci_estudiante, nombres) {
     const url = BASE_URL + '/administracion/inscribirEstudiantePrimerAnio/' + ci_estudiante + '/';
-    // let complemento_ruta =ruta.split('/')[0];
-    // if(complemento_ruta==='parametros')
-    // {   
-    //     complemento_ruta =ruta.split('/')[1];
-    // }
-    // const resumido = complemento_ruta.charAt(0).toUpperCase()+complemento_ruta.slice(1);
-    // const nombre_ruta= resumido.substring(0,resumido.length -1);
-
-
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: { confirmButton: 'btn btn-success me-3', cancelButton: 'btn btn-danger' },
@@ -138,10 +122,7 @@ export async function sendRequest(metodo, parametros, url, mensaje, principal = 
     await axios({ method: metodo, url: url, data: parametros }).then(resultado => {
         console.log(principal);
         const status = resultado.status;
-        //const datos =resultado.data.asignaturas_inscritas
-        //console.log(datos);
-        // if(status ==='success')
-        //CUANDO SE ELIMINAR
+        //CUANDO SE ELIMINA
         if (status === 204) {
             show_alerta(mensaje, 'success')
             // window.setTimeout(()=>{
@@ -182,10 +163,8 @@ export async function sendRequest(metodo, parametros, url, mensaje, principal = 
         }
 
     }).catch(error => {
-        //const {data} =error.data
-        console.log(error)
-        //console.log(error.response.data)
-        //show_alerta(error,'error')
+        //console.log(error)        
+
         show_alerta('No se pudo completar la Accion', 'error')
     });
 }
