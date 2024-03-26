@@ -809,23 +809,7 @@ export async function historialAcademico(datos_estudiante, grado, fecha_emision,
   doc.setFontSize(6).setFont(undefined, 'bold');
   doc.text(`
       SERIE "A"-3 
-<<<<<<< HEAD
-      `, (doc.internal.pageSize.getWidth()/2)+160, finalY,null,null,"center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
-      finalY+=10;  
-    
-    doc.setTextColor(10);
-    doc.setFontSize(14).setFont(undefined, 'bold');                      
-    doc.text(`
-      CERTIFICADO DE CALIFICACIONES
-      `, (doc.internal.pageSize.getWidth()/2)-20, finalY,null,null,"center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
-      finalY+=30;  
-=======
       `, (doc.internal.pageSize.getWidth() / 2) + 160, finalY, null, null, "center");
->>>>>>> 553a6d1fe8fb8b8ff86bcc781529d12c9bab9810
 
   finalY += 10;
 
