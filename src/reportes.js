@@ -542,6 +542,254 @@ export async function generarReporteInscripcionRegulares(asignaturas_tabla, asig
 
 }
 
+export async function generarformularioAdmision(datos_estudiante) {
+  //inicializacion de parametros para el reporte pdf
+  const doc = new jsPDF({ orientation: 'p', unit: 'px', format: 'letter' });
+
+  doc.setFontSize(12);
+
+  //cabeceras de columna de tabla de datos Formulario de Admision
+  const headers = [['N°', 'REQUISITOS DE ADMISIÓN', 'CUMPLE']];
+
+  //lista de requisitos de Admision 
+  let requirements = [];
+  const requisitos = datos_estudiante.requisitos;
+  for (let index = 0; index < requisitos.length; index++) {
+    requirements.push([index + 1, requisitos[index].requisito])
+  }
+
+  let finalY = doc.lastAutoTable.finalY || 10
+
+  //inicialización de las Imagenes del encabezado para el formulario de Admisión
+  await doc.addImage(MINISTERIO, 'JPG', 15, finalY + 5, 60, 60);
+  await doc.addImage(LOGO_UNI, 'PNG', doc.internal.pageSize.width - 65, finalY + 5, 50, 50);
+
+
+  //setear el color de letra
+  doc.setTextColor(10);
+  //setear el tamaño de letra
+  doc.setFontSize(10).setFont(undefined, 'bold');
+  doc.setTextColor(18, 73, 39);
+  doc.text(`
+                   UNIVERSIDAD INDÍGENA BOLIVIANA COMUNITARIA INTERCULTURAL PRODUCTIVA
+                   UNIBOL QUECHUA "CASIMIRO HUANCA"
+                   `, (doc.internal.pageSize.getWidth() / 2) - 20, finalY, null, null, "center");
+  finalY += 20;
+
+  doc.setTextColor(100);
+  doc.setFontSize(8).setFont(undefined, 'normal');
+  doc.text(`
+                   Decreto Supremo N° 29664 de 2 de agosto de 2008 - Decreto Supremo N° 3079 del 8 de febrero 2017
+                   R.M. 505/2013 - R.M. 1300/2018"
+                   `, (doc.internal.pageSize.getWidth() / 2) - 20, finalY, null, null, "center");
+
+  finalY += 20;
+
+  doc.setTextColor(10);
+  doc.setFontSize(8);
+  doc.text(`
+                   Tukuy sunquwan yachayninchikta, ruwayninchikta, yuyayninchikta kallpachaspa sumaq kawsayman kutina                       
+                   `, (doc.internal.pageSize.getWidth() / 2) - 5, finalY, null, null, "center");
+
+  finalY += 15;
+
+  doc.setTextColor(10);
+  doc.setFontSize(12).setFont(undefined, 'bold');
+  doc.text(`
+                  FORMULARIO DE ADMISIÓN UNIBOL-QUECHUA
+                  `, (doc.internal.pageSize.getWidth() / 2) - 40, finalY, null, null, "center");
+
+  finalY += 10;
+
+  doc.setTextColor(10);
+  doc.setFontSize(18).setFont(undefined, 'bold');
+  doc.text(`
+                  GESTIÓN ${datos_estudiante.gestion}
+                  `, (doc.internal.pageSize.getWidth() / 2) - 40, finalY, null, null, "center");
+
+  finalY += 100;
+
+  doc.setTextColor(10);
+  doc.setFontSize(12).setFont(undefined, 'bold');
+  doc.text(`
+                  C.I.: ${datos_estudiante.datos_estudiante.ci_estudiante}
+                  `, (doc.internal.pageSize.getWidth() / 2) + 120, finalY, null, null, "center");
+
+  finalY += 10;
+
+  doc.setTextColor(10);
+  doc.setFontSize(14).setFont(undefined, 'bold');
+  doc.text(`
+                  DATOS PERSONALES
+                  `, -30, finalY, null, null, "left");
+
+  finalY += 15;
+
+  doc.setTextColor(10);
+  doc.setFontSize(11);
+  doc.text(`
+                   Apellidos y Nombres:                                  
+                   Fecha de Nacimiento: 
+                   Estado Civil: 
+                   Género: 
+                   Lugar de Nacimiento: 
+                   Correo Electrónico: 
+                   Teléfono:
+                   `, -20, finalY);
+
+  const estudiante1 = datos_estudiante.datos_estudiante;
+  let estado = '';
+  let genero = '';
+  let email = '';
+  let celular = '';
+  let nacimiento = '';
+  let fecha_nac = '';
+  //validacion de parametros
+  if (estudiante1.estado_civil) {
+    estado = estudiante1.estado_civil.toUpperCase();
+  } else {
+    estado = '';
+  }
+
+  if (estudiante1.genero === 'M') {
+    genero = 'MASCULINO';
+  } else {
+    genero = 'FEMENINO';
+  }
+
+  if (estudiante1.email) {
+    email = estudiante1.email.toUpperCase();
+  } else {
+    email = '';
+  }
+
+  if (estudiante1.celular > 0) {
+    celular = estudiante1.celular;
+  } else {
+    celular = '';
+  }
+  if (estudiante1.prov_nacimiento) {
+    nacimiento = estudiante1.prov_nacimiento.toUpperCase();
+  }
+  fecha_nac = estudiante1.fecha_nacimiento ? this.formatDate(estudiante1.fecha_nacimiento) : '';
+  console.log(fecha_nac + 'asi');
+
+  doc.setTextColor(100);
+  doc.setFontSize(11);
+  doc.text(`
+                   ${estudiante1.apellidoP} ${estudiante1.apellidoM} ${estudiante1.nombres}                         
+                   ${fecha_nac}
+                   ${estado}                                
+                   ${genero}
+                   ${nacimiento}
+                   ${email}
+                   ${celular}
+                   `, (doc.internal.pageSize.getWidth() / 2) - 130, finalY);
+
+  finalY += 75;
+
+  doc.setTextColor(10);
+  doc.setFontSize(14).setFont(undefined, 'bold');
+  doc.text(`
+                  DATOS DE ORGANIZACIÓN
+                    `, -30, finalY, null, null, "left");
+
+  finalY += 15;
+
+  doc.setTextColor(10);
+  doc.setFontSize(11);
+  doc.text(`                                                       
+                    -Matriz: 
+                    -Regional: 
+                    -Comunidad: 
+                    Lengua que habla:                        
+                    `, -20, finalY);
+
+  let matriz = '';
+  let regional = '';
+  let comunidad = '';
+  let idioma = '';
+  //validacion de parametros de organización social
+  if (estudiante1.organizacion_matriz) {
+    matriz = estudiante1.organizacion_matriz.toUpperCase();
+  }
+  if (estudiante1.organizacion_regional) {
+    regional = estudiante1.organizacion_regional.toUpperCase();
+  }
+  if (estudiante1.comunidad_sindicato) {
+    comunidad = estudiante1.comunidad_sindicato.toUpperCase();
+  }
+  if (estudiante1.idioma_nativo) {
+    idioma = estudiante1.idioma_nativo;
+  }
+
+
+  doc.setTextColor(100);
+  doc.setFontSize(11).setFont(undefined, 'bold');
+  doc.text(`                                        
+                   ${matriz}                                
+                   ${regional}
+                   ${comunidad}
+                   ${idioma}                       
+                   `, (doc.internal.pageSize.getWidth() / 2) - 130, finalY);
+
+  finalY += 55;
+
+
+  doc.setTextColor(10);
+  doc.setFontSize(14).setFont(undefined, 'bold');
+  doc.text(`
+                  CARRERA DE INGRESO
+                    `, -30, finalY, null, null, "left");
+
+  finalY += 20;
+
+  doc.setTextColor(10);
+  doc.setFontSize(11).setFont(undefined, 'bold');
+  doc.text(`
+                     ${estudiante1.nombre_carrera}
+                    `, (doc.internal.pageSize.getWidth() / 2) - 20, finalY, null, null, "center");
+
+  finalY += 10;
+
+  autoTable(doc, {
+    startY: finalY + 10,
+    head: headers,
+    body: requirements,
+    //theme:'grid',theme:'striped',theme:'plain'
+    theme: 'striped',
+    tableLineColor: [0, 0, 0], tableLineWidth: 0.5,
+    styles: { fontSize: 10, cellWidth: 'wrap', halign: 'justify' },
+    bodyStyles: { lineWidth: 0.2, lineColor: [0, 0, 0] },
+    headStyles: {
+      fillColor: [255, 255, 255],
+      textColor: [0, 0, 0],
+      halign: 'center'
+    },
+    padding: 2,
+    columnStyles: {
+      0: { cellWidth: 50, halign: 'center' },
+      1: { cellWidth: 299, halign: 'center' },
+      2: { cellWidth: 50, halign: 'center' },
+    }
+  });
+
+  finalY = doc.lastAutoTable.finalY
+  finalY += 10;
+
+  doc.setTextColor(10);
+  doc.setFontSize(8).setFont(undefined, 'bold');
+  doc.text(`
+                Arch: ${datos_estudiante.numero_archivo}              
+                  `, -5, finalY);
+
+  //forma alternativa para la generacion de pdf
+  //await doc.save(`${this.apellidoP} ${this.apellidoM} ${this.nombres}`);      
+
+  await window.open(doc.output('bloburl'), '_blank');
+
+}
+
 export async function historialAcademico(datos_estudiante, grado, fecha_emision, otros_datos, gestion = 2023) {
 
   const doc = new jsPDF({ orientation: 'p', unit: 'px', format: 'letter' });

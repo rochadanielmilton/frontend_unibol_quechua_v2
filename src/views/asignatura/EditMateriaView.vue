@@ -109,9 +109,12 @@ export default {
   },
   mounted() {
     const route = useRoute();
+    //obtencion del codigo de asignatura
     this.id = route.params.id;
 
     this.url = this.url + '/' + this.id + '/';
+
+    //obtenemos la asignatura correspondiente de acuerdo al codigo de asignatura
     this.getMateria();
     this.getDocentes();
     this.getAniosAsignados();
@@ -155,9 +158,8 @@ export default {
       this.anios_asignados.push('TERCERO');
       this.anios_asignados.push('CUARTO');
       this.anios_asignados.push('QUINTO');
-      console.log(this.anios_asignados);
-
     },
+    //metodo para guardar la información 
     async guardar() {
       event.preventDefault();
       if (this.nombre_asignatura.trim() === '') {

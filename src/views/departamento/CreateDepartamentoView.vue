@@ -29,9 +29,10 @@
 // @ is an alias to /src
 import { show_alerta, sendRequest } from "../../funciones";
 import axios from 'axios';
+//definicion de variable global
 let BASE_URL = import.meta.env.VITE_BASE_URL;
 export default {
-  name: 'CreateMateriaView',
+  name: 'CreateDepartamentoView',
   data() {
     return {
       id: 0, nombre_departamento: '',
@@ -44,6 +45,7 @@ export default {
   }
   , methods:
   {
+    //metodo para guardar la informacion de un nuevo departamento
     async guardar() {
 
       event.preventDefault();

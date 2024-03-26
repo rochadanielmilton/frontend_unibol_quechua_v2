@@ -31,10 +31,11 @@
 import { show_alerta, sendRequest } from "../../funciones";
 import { useRoute } from "vue-router";
 import axios from 'axios';
+//definicion de variable global para el consumo de servicios API-REST
 let BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export default {
-  name: 'EditMateriaView',
+  name: 'EditDepartamentoView',
   data() {
     return {
       id: 0, nombre_departamento: '',
@@ -44,9 +45,11 @@ export default {
   },
   mounted() {
     const route = useRoute();
+    //obtencion del id del departamento
     this.id = route.params.id;
 
     this.url = this.url + '/' + this.id + '/';
+    //obtener el departamento por su id
     this.getDepartamento();
 
     this.principal = '/departamentos';
@@ -61,6 +64,7 @@ export default {
         show_alerta(error, 'error')
       });
     },
+    //guardar la edicion de un Departamento
     async guardar() {
       event.preventDefault();
       if (this.nombre_departamento.trim() === '') {

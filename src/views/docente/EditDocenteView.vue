@@ -80,8 +80,9 @@
 // @ is an alias to /src
 import { show_alerta, sendRequest } from "../../funciones";
 import { useRoute } from "vue-router";
-//import {ref,computed} from 'vue';
+
 import axios from 'axios';
+//definicion de variable global para el consumo de servicios API-REST
 let BASE_URL = import.meta.env.VITE_BASE_URL;
 export default {
   name: 'EditDocenteView',
@@ -93,9 +94,11 @@ export default {
   },
   mounted() {
     const route = useRoute();
+    //obtener el id del docente
     this.id = route.params.id;
 
     this.url = this.url + '/' + this.id + '/';
+    //obtener docente seleccionado
     this.getDocente();
   },
   methods: {
@@ -120,6 +123,7 @@ export default {
       );
     }
     ,
+    //guardar informacion del docente editado
     async guardar() {
       event.preventDefault();
       if (this.nombres.trim() === '') {

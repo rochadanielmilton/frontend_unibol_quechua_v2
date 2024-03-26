@@ -47,6 +47,7 @@
 <script>
 // @ is an alias to /src
 import { show_alerta, sendRequest } from "../../funciones";
+//variable global para el consumo de servicios API-REST
 let BASE_URL = import.meta.env.VITE_BASE_URL;
 export default {
   name: 'CreateEstudianteView',
@@ -62,6 +63,7 @@ export default {
   }
   , methods:
   {
+    //metodo para guardar una Nueva Carrera
     async guardar() {
       event.preventDefault();
       if (this.nombre_carrera.trim() === '') {

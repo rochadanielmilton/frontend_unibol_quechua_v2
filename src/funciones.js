@@ -70,6 +70,8 @@ export function confirmar1(id, nombre, ruta, principal = '/') {
         }
     })
 }
+
+//metodo para preguntar si se desea inscribir a un Estudiante del Curso Preparatorio
 export async function confirmarRegistroP(ci_postulante, nombre) {
     const url = BASE_URL + '/administracion/registrarNueboEstudiante/' + ci_postulante + '/';
 

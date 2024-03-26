@@ -131,9 +131,7 @@ import 'datatables.net-responsive-bs5';
 DataTable.use(DataTableLib);
 DataTable.use(Select);
 
-
 let BASE_URL = import.meta.env.VITE_BASE_URL;
-let asi = 'hola';
 export default {
   name: 'MateriaView',
   components: { DataTable },
@@ -141,6 +139,7 @@ export default {
     return {
       materias: null, docente: '', docs: [], principal: '', ruta: '../loading.gif',
       materiasUpdate: [],
+      //columnas para el Datatable
       columns: [
         {
           data: null, render: function (data, type, row, meta) { return `${meta.row + 1}` }
@@ -169,10 +168,12 @@ export default {
     }
   },
   mounted() {
+    //obtener materias 
     this.getMaterias();
     this.principal = '/asignaturas';
   },
   methods: {
+    //verificar que se haya seleccionado una Materia para su edicion u eliminacion
     verificarSeleccion() {
       let datos = this.materias;
       let identificador = '';
@@ -219,8 +220,6 @@ export default {
         );
     },
     getDocentess(id_doc, codigo_asignatura) {
-
-
       if (id_doc === null) {
         return;
       } else

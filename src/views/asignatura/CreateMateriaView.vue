@@ -95,13 +95,16 @@ export default {
   name: 'CreateMateriaView',
   data() {
     return {
+      //variables  para el uso de campos en el formulario 
       id: 0, codigo_asignatura: '', nombre_asignatura: '', descripcion: '', id_docente: '', horas_practicas: '', horas_teoricas: '', total_horas: '',
       pre_requisito1: '', pre_requisito2: '', anio_asignado: '', docentes: null, anios_asignados: [], principal: '',
       url: BASE_URL + '/parametros/asignaturas/'
     }
   },
   mounted() {
+    //metodo para obtener la lista de docentes 
     this.getDocentes();
+    //metodo para obtener los años asignados para la gestion académica
     this.getAniosAsignados();
     this.principal = '/materias';
   }
@@ -122,6 +125,7 @@ export default {
       this.anios_asignados.push('CUARTO');
       this.anios_asignados.push('QUINTO');
     },
+    //metodo para guardar la informacion de un nueva Asignatura
     async guardar() {
 
       event.preventDefault();

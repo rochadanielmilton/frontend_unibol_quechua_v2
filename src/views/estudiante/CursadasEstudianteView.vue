@@ -1,12 +1,9 @@
 <template>
-  <!-- <div class="container-fluid text-center"> -->
   <div v-if="materias" class="container" id="contenido-global">
     <div class="row">
-      <!-- <div class="col-lg-10 offset-lg-1"> -->
       <div class="mb-3 fw-bold  normal-letter">
-
         <div class="mb-3 fs-5 text-center">
-          HISTORIAL ACADÉMICO 
+          HISTORIAL ACADÉMICO
         </div>
 
         <div class="  fs-6 normal-letter">
@@ -18,16 +15,12 @@
         </div>
 
         <div class="  fs-6">
-          NRO DE REGISTRO: {{ `${numero_registro}` }}
+          NRO. DE REGISTRO: {{ `${numero_registro}` }}
         </div>
 
         <div class="  fs-6">
           CARRERA: {{ `${nombre_carrera}` }}
         </div>
-
-        <!-- <div class=" fs-6">                 
-              APELLIDOS Y NOMBRES:      {{`${apellidoP} ${apellidoM} ${nombres}`}}
-            </div> -->
 
         <div class=" mb-3 fs-6">
           FECHA DE EMISIÓN : {{ `${fecha_emision}` }}
@@ -42,15 +35,12 @@
         </div>
 
       </div>
-      <!-- </div> -->
     </div>
 
 
     <div class="row">
-      <!-- <div class="col-lg-12 col-sm-12 offset-lg-2 align-center"> -->
-      <!-- <div class="col-lg-12 col-sm-12 align-center"> -->
-      <!-- <div class="col-lg-10 offset-lg-1"> -->
       <div class="table-responsive ">
+        <!-- Opciones para la deficion de un Datatable -->
         <DataTable ref="table" id="materias_cursadas" :data="materias" :columns="columns"
           class="table table-bordered table-striped display small" :options="{
             select: true, responsive: true, autoWidth: true, dom: 'Bfrti',
@@ -60,7 +50,6 @@
               name: 'edit'
             }],
             pageLength: 100,
-            //responsivePriority: 1,                                                   
             columnDefs: [{
               width: '40%', target: [6],
               width: '10%', target: [7],
@@ -88,10 +77,7 @@
               <th>
                 SIGLA CÓDIGO
               </th>
-              <!-- <th>
-                  SIGLA CONV.
-                </th> -->
-              
+
               <th>
                 ASIGNATURA
               </th>
@@ -111,92 +97,46 @@
               <th>
                 HOMOL.
               </th>
-              <!-- <th>
-                        INS. DE APR.
-                      </th>         
-                      <th>
-                        OBSERVACION
-                      </th>                                            
-                      <th>
-                        ACCIONES
-                      </th> -->
             </tr>
           </thead>
           <tbody class="table-group-divider" id="contenido">
-            <!-- <tr v-for="materia, i  in materias" :key="materia">
-                <td>{{ i + 1 }}</td>
-                <td>{{ materia.anio_cursado }}</td>
-                <td>{{ materia.codigo_asignatura }}</td>
-                <td>{{ materia.convalidacion }}</td>
-                <td>{{ materia.homologacion }}</td>
-                <td>{{ materia.nombre_asignatura }}</td>
-                <td>{{ materia.total_horas }}</td>
-                <td>{{ materia.pre_requisitos }}</td>
-                <td>{{ materia.nota_num_final }}</td>
-                <td>{{ materia.estado_gestion_espaniol }}</td> -->
-            <!-- <td></td>
-                        <td></td> -->
-            <!-- <td>{{ estudiante.nombre_asignatura }}</td> -->
-            <!-- <td >{{ estudiante.id_docente }}</td> -->
-
-            <!-- <td >{{ estudiante.estado_gestion_espaniol }}</td> -->
-            <!--  <td>{{ getCarrera(estudiante.id_carrera) }}</td> -->
-            <!-- <td>{{ estudiante.nota_num_final }}</td> -->
-
-
-            <!-- <td>                                                                                 
-                            <button   class="btn btn-warning" @click="clickMe"> -->
-            <!-- <i class="fa-solid fa-file-pdf"></i> -->
-            <!-- </button>                         
-                        </td> -->
-            <!-- </tr> -->
           </tbody>
         </DataTable>
-        <!-- </div> -->
       </div>
     </div>
-    <!-- </div> -->
-    <!-- <b-table striped hover :items="materias">
-    </b-table> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-//import {ref} from 'vue';
 import axios from "axios";
 import { show_alerta, confirmar1 } from '../../funciones';
 import { useRoute } from "vue-router";
-
 
 //librerias para la exportacion en pdf
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 
-
+//librerias para el uso de Datatables
 import DataTable from 'datatables.net-vue3';
 import DataTableLib from 'datatables.net-bs5';
 import Select from "datatables.net-select";
 import 'datatables.net-responsive-bs5';
-//import 'datatables.net-select';
 
 DataTable.use(DataTableLib);
 DataTable.use(Select);
 
 
 import { ref } from 'vue';
-// const provincias = computed(()=>{
-//         return this.provincias = this.getProvincias()
-// })
-//const provincias = ref([]);
-//const contador =ref(0);
-//let BASE_URL = process.env.VUE_APP_BASE_URL;
+
+//definicion de variable global para el consumo de servicios API-REST
 let BASE_URL = import.meta.env.VITE_BASE_URL;
+//importacion de las variables globales para la generacion de pdf
 let MINISTERIO = import.meta.env.VITE_MINISTERIO;
 let LOGO_UNI = import.meta.env.VITE_LOGO_UNI;
 export default {
   components: { DataTable },
-  name: 'AprobadasEstudianteView',
+  name: 'CursadasEstudianteView',
   data() {
     return {
       estudiantes: null, carreras: [], principal: '',
@@ -205,10 +145,11 @@ export default {
       cantidad_todas: '',
       promedio_todas: '',
       promedio_aprobadas: '',
-      horas_academicas:'',
+      horas_academicas: '',
       materias: null, message: '',
-      //url: BASE_URL + '/estudiantes/obtenerAsignaturasCursadas',
+
       url: BASE_URL + '/estudiantes/ObtenerHitorialAcademico2',
+      //columnas de datos segun los parametros del consumo de servicio API-REST
       columns: [
         {
           data: null, render: function (data, type, row, meta) { return `${meta.row + 1}` }
@@ -221,17 +162,6 @@ export default {
         { data: null, render: function (data) { return `${data[5]}` } },
         { data: null, render: function (data) { return `${data[6]}` } },
         { data: null, render: function (data) { return `${data[7]}` } },
-        //{ data: null, render: function (data) { return `${data.apellidoP} ${data.apellidoM} ${data.nombres}` } },
-        //{ data: `${data.nombres} ${data.apellidoP} ${data.apellidoM}` },
-
-        // <td>{{ materia.anio_cursado }}</td>
-        // { data: 'codigo_asignatura' },
-        // { data: 'homologacion' },
-        // { data: 'nombre_asignatura' },
-        // { data: 'total_horas' },
-        // { data: 'pre_requisitos' },
-        // { data: 'nota_num_final' },
-        // { data: 'estado_gestion_espaniol' },
       ]
     }
   },
@@ -244,9 +174,11 @@ export default {
   },
   mounted() {
     const route = useRoute();
+    //obtener el ci del estudiante
     this.id = route.params.id;
 
     this.url = this.url + '/' + this.id + '/';
+    //obtener las materias cursadas de un estudiante dado su ci(Historial Academico)
     this.getMateriasCursadas();
     //ruta de navegacion despues de la accion eliminar
     this.principal = '/estudiantes';
@@ -254,99 +186,14 @@ export default {
   methods: {
 
     async exportPDF() {
-      //first try
-      //parameters:orientation,unit,format
-      // const doc = new jsPDF('p', 'pt', 'A4');
 
-
-      //   let pdfName = 'test';                     
-      //   doc.text(`Hello Students:
-
-      //     ${this.estudiantes[0].nombre_carrera}                   
-
-      //     `, 10, 100);
-      //   doc.save(pdfName + '.pdf');
-
-      //second try
-      //const doc = new jsPDF({unit: 'px'});
+      //inicializacion de parametros para la generacion de reporte pdf
       const doc = new jsPDF({ orientation: 'p', unit: 'px', format: 'letter' });
-      //const doc = new jsPDF('l','px,','letter');
       doc.setFontSize(12);
-      //let setY=15;
-
-      // this.estudiantes.forEach(element => {
-      //   doc.text(`
-      //     ${element.nombres}                                         
-      //     `, 10, setY);
-      //     setY+=15;
-      // });
-
-      //EJEMPLO QUE ESTA AL FINAL DE COMO PASAR LOS HEADERS Y BODY
-      //const headers = [['Name', 'Email', 'Country']];
-      //const headers1 = [['Nro','nombres', 'apellidoP', 'apellidoM','celular','nombre_carrera','estado']];  // 注意有兩層[]
-      // const body = [
-      //     ['David', 'david@example.com', 'Sweden'],
-      //     ['Castille', 'castille@example.com', 'Spain']
-      // ]
-
-      //SEGUNDA FORMA CON EL RELLENADO DE UN FORMATO SOLICITADO ATRAVES DE ESTRUCTURAS DE DATOS, LA PRIMERA A TRAVES DE UN TAG HTML
-      // const resultado = [];
-      // const encabezado = [];
-
-      // for (var i = 0; i < this.estudiantes.length; i += 1) {
-      //   console.log(this.estudiantes[i]);
-      //   //resultado.push(this.estudiantes[i])
-      //    if(i==0)
-      //    {
-      //      encabezado.push({nombres:`${this.estudiantes[i].apellidoP} ${this.estudiantes[i].apellidoM} ${this.estudiantes[i].nombres} `,ci_estudiante:this.estudiantes[i].ci_estudiante,
-      //                      nombre_carrera:this.estudiantes[i].nombre_carrera});
-      //       console.log(encabezado);
-      //    }
-      //   resultado.push([i+1,this.estudiantes[i].nombres,this.estudiantes[i].apellidoP,this.estudiantes[i].apellidoM,this.estudiantes[i].celular,
-      //   this.estudiantes[i].nombre_carrera,this.estudiantes[i].estado])
-      //result.push(Object.assign({}, data));
-      // }
-
-      //UNNECESARY PIECE OF CODE 
-      // let otro=[];
-      //   this.estudiantes.forEach(element => {
-      //     let jsonsito = {
-      //       nombre:element.nombres,
-      //       apellidoP:element.apellidoP,
-      //       apellidoM:element.apellidoM
-      //     }
-      //     otro.push(jsonsito);
-
-      //   doc.text(`
-      //     ${element.nombres}                                         
-      //     `, 10, setY);
-      //     setY+=15;
-      // });
-
-
-      //numero de pagina
-      //  const pageNumber=3;
-      //  for (let i = 0; i < pageNumber; i++) {
-      //     doc.setPage(i);
-      //     let pageCurrent = doc.internal.getCurrentPageInfo().pageNumber; //現在這頁
-      //     doc.setFontSize(12); //設定字體大小(optional)
-      //     doc.text(
-      //       `${pageCurrent} / ${pageNumber}`,
-      //       190,
-      //       doc.internal.pageSize.height - 10,
-      //       {align: 'left'}
-      //     );
-      //   } 
-
-      //<!--  -->
-      //RELLENADO DE FORMA INICIAL()
-      //RELLENADO DE DATOS DEL ESTUDIANTE:
-      //INICIO PRIMERA FORMA
 
       let tabla_promedios = [];
 
-
-      //asignaturas_tabla.push([index+1,datos[index].anio_asignado ,datos[index].codigo_asignatura,datos[index].nombre_asignatura])          
+      //definicion de la tabla de promedios y desempeño Academico del Estudiante
       tabla_promedios.push(['TOTAL HORAS ACADÉMICAS', this.horas_academicas])
       tabla_promedios.push(['TOTAL DE ASIGNATURAS APROBADAS', this.cantidad_aprobadas])
       //tabla_promedios.push(['TOTAL DE ASIGNATURAS CURSADAS', this.cantidad_todas])
@@ -356,74 +203,9 @@ export default {
       doc.setTextColor(10);
       doc.setFontSize(15);
 
-      // doc.text(`
-      //   Primer comentario                                        
-      //    `, 10, setY);
-
       let finalY = doc.lastAutoTable.finalY || 10
 
-      //doc.addImage("https://picsum.photos/200", "JPEG", doc.internal.pageSize.width-80, finalY+20, 50, 50);
-
-      //await doc.addImage("../../logotipo-unibol-quechua.png", "PNG", doc.internal.pageSize.width-80, finalY+20, 50, 50);
-      //await doc.addImage("../../caracteristicas-bosques-tropicales.jpg", "JPG", 30, finalY+20, 50, 50);
-
-      //<!-- -->
-      //PRIMER EJEMPLO DE PRUEBA EXITOSO
-      // doc.text(`
-      //    HISTORIAL ACADEMICO DE AVANCE GENERAL                                                      
-      //    `, 20, finalY);
-      //                   //finalY+=25;    
-      //    finalY+=20;    
-      // //SETEAMOS EL TAMAÑO DE LETRA PARA COLOCAR LOS DATOS
-      // doc.setFontSize(10);
-      // doc.text(`                            
-      //    APELLIDOS Y NOMBRES: ${this.apellidoP} ${this.apellidoM} ${this.nombres}                                  
-      //    CEDULA DE IDENTIDAD: ${this.ci_estudiante}
-      //    NRO DE REGISTRO: ${this.numero_registro}
-      //    CARRERA: ${this.nombre_carrera}
-      //    FECHA DE EMISION: ${this.fecha_emision}
-      //    NIVEL DE FORMACION: ${this.grado}
-      //    `,80, finalY);
-      //    finalY+=35;     
-
-      //INICIANDO LOS ENCABEZADOS Y FORMATO DE PRESENTACION
-      // await doc.addImage(MINISTERIO, 'JPG', 15, finalY + 5, 60, 60);
-      // await doc.addImage(LOGO_UNI, 'PNG', doc.internal.pageSize.width - 65, finalY + 5, 50, 50);
-
-
-      // // await doc.addImage("../../ministerio.jpg", "JPG", 15, finalY + 5, 60, 60);
-      // // await doc.addImage("../../logotipo-unibol-quechua.png", "PNG", doc.internal.pageSize.width - 65, finalY + 5, 50, 50);
-
-      // doc.setTextColor(10);
-      // doc.setFontSize(10).setFont(undefined, 'bold');
-      // doc.setTextColor(18, 73, 39);
-      // doc.text(`
-      //                  UNIVERSIDAD INDÍGENA BOLIVIANA COMUNITARIA INTERCULTURAL PRODUCTIVA
-      //                  UNIBOL QUECHUA "CASIMIRO HUANCA"
-      //                  `, (doc.internal.pageSize.getWidth() / 2) - 20, finalY, null, null, "center");
-      // //finalY+=25;    
-      // //añadimos 20+50 por el tamaño de las imagenes
-      // finalY += 20;
-
-      // doc.setTextColor(100);
-      // doc.setFontSize(8).setFont(undefined, 'normal');
-      // doc.text(`
-      //                  Decreto Supremo N° 29664 de 2 de agosto de 2008 - Decreto Supremo N° 3079 del 8 de febrero 2017
-      //                  R.M. 505/2013 - R.M. 1300/2018"
-      //                  `, (doc.internal.pageSize.getWidth() / 2) - 20, finalY, null, null, "center");
-      // //finalY+=25;    
-      // //añadimos 20+50 por el tamaño de las imagenes
-      // finalY += 20;
-
-      // doc.setTextColor(10);
-      // doc.setFontSize(8);
-      // doc.text(`
-      //                  Tukuy sunquwan yahcyaninchikta, ruwayninchikta, yuyayninchikta kallpachaspa sumaq kawsayman kutina                       
-      //                  `, (doc.internal.pageSize.getWidth() / 2) - 5, finalY, null, null, "center");
-      // //finalY+=25;    
-      // //añadimos 20+50 por el tamaño de las imagenes
-      // finalY += 15;
-
+      //inicio de la cabecera para impresion en hojas membretadas
       finalY += 65;
 
       doc.setTextColor(10);
@@ -431,8 +213,7 @@ export default {
       doc.text(`
                       HISTORIAL ACADÉMICO 
                       `, (doc.internal.pageSize.getWidth() / 2) - 20, finalY, null, null, "center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
+
       finalY += 10;
 
       doc.setTextColor(10);
@@ -440,18 +221,15 @@ export default {
       doc.text(`
                       SEGÚN AJUSTE DE RM 0155/2023
                       `, (doc.internal.pageSize.getWidth() / 2) - 15, finalY, null, null, "center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
       finalY += 10;
-      
+
 
       doc.setTextColor(10);
       doc.setFontSize(6).setFont(undefined, 'bold');
       doc.text(`
       SERIE "A"-3 
       `, (doc.internal.pageSize.getWidth() / 2) + 160, finalY, null, null, "center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
+
       finalY += 10;
 
 
@@ -465,11 +243,6 @@ export default {
                        FECHA DE EMISIÓN: 
                        NIVEL DE FORMACIÓN: 
                        `, 10, finalY);
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
-      //finalY+=35; 
-      //SETEAMOS EL TAMAÑO DE LETRA PARA COLOCAR LOS DATOS
-      //doc.setFontSize(9);
 
       doc.setTextColor(100);
       doc.text(`
@@ -481,24 +254,18 @@ export default {
                        ${this.grado}
                        `, (doc.internal.pageSize.getWidth() / 2) - 130, finalY);
 
-
-
       finalY += 35;
 
-
-
-      //PRIMERA FORMA FINALIZADA 
+      //inicio de Tabla de Datos, materias-cursadas(Historial Academico)
       autoTable(doc, {
         startY: finalY + 20,
         html: '#materias_cursadas',
-        //styles: {font: 'arial',fontSize:9}
-        //styles: {fontSize:9,halign: 'left'},
         theme: 'plain',
         tableLineColor: [0, 0, 0], tableLineWidth: 0.2,
         styles: { fontSize: 6, halign: 'center' },
         bodyStyles: { lineWidth: 0.2, lineColor: [0, 0, 0] },
-        margin: { left: 50,top: 105 },
-        padding: 2                      
+        margin: { left: 50, top: 105 },
+        padding: 2
       })
 
       finalY = doc.lastAutoTable.finalY
@@ -507,9 +274,8 @@ export default {
       let pageWidth = doc.internal.pageSize.width;
       let margin = (pageWidth - wantedTableWidth) / 2;
 
+      //inicio de Tabla Promedios
       autoTable(doc, {
-        //QUITANDO ESPACIO
-        //startY: finalY + 20,               
         startY: finalY + 10,
         showHead: 'never',
         body: tabla_promedios,
@@ -522,10 +288,8 @@ export default {
           1: { columnWidth: 'auto' }
         },
         tableWidth: doc.internal.pageSize.getWidth() / 3,
-        margin: { left: margin - 20, right: margin,top: 105 },
+        margin: { left: margin - 20, right: margin, top: 105 },
         padding: 2
-        //columnStyles:{color}
-
       });
       finalY = doc.lastAutoTable.finalY
       finalY += 10;
@@ -540,30 +304,11 @@ export default {
         *Documento solo válido para trámite interno.
           `, 40, finalY);
 
-
-      //doc.addImage("https://picsum.photos/200", "JPEG", 15, finalY+20, 10, 10);
-
-      //const body = this.estudiantes;
-      //const body =otro;
-
-      //SEGUNDA FORMA FINALIZADA
-      // autoTable(doc, {
-      //   head: headers1,
-      //   body:resultado,
-      // });
-
-      //doc.table(1, 1, this.generateData(100), headers1, { autoSize: true });
-
+      //forma alternativa para la generacion de pdf
       //await doc.save(`${this.apellidoP} ${this.apellidoM} ${this.nombres}`);      
+
       await window.open(doc.output('bloburl'), '_blank');
 
-      //var doc = new jsPDF('p', 'pt', 'A4');
-      // margins = {
-      //     top: 80,
-      //     bottom: 60,
-      //     left: 40,
-      //     width: 522
-      // };                                                                                                     
     }
     ,
     sortGestion(data) {
@@ -572,16 +317,13 @@ export default {
           return -1;
         }
       });
-      console.log(data);
       return data;
     },
+    //obtener Asignaturas Cursadas dado el ci de un estudiante
     getMateriasCursadas() {
       axios.get(this.url)
         .then(
           response => {
-
-            //if(!response.data.message){
-            //console.log('psando normal');
             this.message = response.data.message,
               this.ci_estudiante = response.data['estudiante']['ci_estudiante'],
               this.nombres = response.data['estudiante']['nombres'],
@@ -597,67 +339,33 @@ export default {
               this.cantidad_todas = response.data['otros_datos']['cantidad_todas'],
               this.promedio_todas = response.data['otros_datos']['promedio_todas'],
               this.promedio_aprobadas = response.data['otros_datos']['promedio_aprobadas'],
-              this.horas_academicas=response.data['total_horas_vencidas'],
+              this.horas_academicas = response.data['total_horas_vencidas'],
 
               this.materias = this.sortGestion(response.data['datos'])
 
-            //this.materias = response.data['datos']
-            // }else{
-            // console.log('aki esta el error'+response.data.message);
-            // }
-
-
-
           }
         ).catch(error => {
-          console.log(error)
           show_alerta(this.message, 'error')
           this.$router.push('/estudiantes')
         });
-      //console.log(this.materias+'sss');        
 
     }, eliminar(id, nombre) {
-      //   for (let index = 0; index < 10; index++) {
-      //     sendRequest('POST',{
-      //     "id":999,
-      //     "nombre_provincia": "TEST-PROVINCIAS",
-      //     "id_departamento": null
-      // },'http://127.0.0.1:8000/parametros/provincias/','ProvinciaS Eliminada');              
-      //   }
       const ruta = 'estudiantes/estudiantes/' + id + '/';
       confirmar1(id, nombre, ruta, this.principal);
       this.$router.push('/estudiantes')
-    },
-    getCarrera(id) {
-      axios.get(BASE_URL + '/parametros/carreras/' + id + '/')
-        .then(
-          response => (
-            this.carreras[id] = response.data['nombre_carrera']
-          )
-        );
-      return this.carreras[id]
-    },
-
+    }
   }
 }
 </script>
 <style>
+/* estilos para el uso de Datatables */
 @import 'datatables.net-bs5';
-
-/*@import 'datatables.net-dt';*/
 @import 'datatables.net-responsive-dt';
 
 body {
   font-size: .875rem;
   line-height: 1.25rem;
 }
-
-
-/* body {
-    font-size: .875rem;
-    line-height: 1.25rem;
-} */
-
 
 table.dtr-inline.collapsed>tbody>tr>td.dtr-control,
 table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control {

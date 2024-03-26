@@ -96,7 +96,7 @@
 // @ is an alias to /src
 import { ref } from 'vue';
 import axios from "axios";
-//import DataTable from "datatables.net-bs5";
+
 //importacion de servicios adicionales
 import { confirmar1, show_alerta } from '../../funciones';
 
@@ -116,6 +116,7 @@ export default {
   data() {
     return {
       carreras: null, url: BASE_URL + '/parametros/carreras/', principal: '', ruta: '../loading.gif',
+      //seleccion de datos para las columnas del Datatable
       columns: [
         {
           data: null, render: function (data, type, row, meta) { return `${meta.row + 1}` }
@@ -140,6 +141,7 @@ export default {
     this.principal = '/carreras';
   },
   methods: {
+    //verificar que se haya seleccionado una Carrera para su edicion u eliminacion
     verificarSeleccion() {
       let datos = this.carreras;
       let identificador = '';
@@ -176,6 +178,7 @@ export default {
         show_alerta(error, 'info')
       }
     },
+    //redireccion a la vista mostrarMalla
     mostrarMallaAcademica() {
       const { identificador } = this.verificarSeleccion();
       console.log(identificador);
@@ -186,10 +189,12 @@ export default {
         show_alerta(error, 'info')
       }
     },
+    //obtener carreras
     getCarreras() {
       axios.get(this.url)
         .then(response => (this.carreras = response.data));
-    }, eliminar(id, nombre) {
+    },
+    eliminar(id, nombre) {
       const ruta = 'parametros/carreras/' + id + '/';
       confirmar1(id, nombre, ruta, this.principal);
     },

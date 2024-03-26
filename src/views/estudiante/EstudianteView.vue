@@ -1,36 +1,18 @@
 <template>
-   
-
-
-
-
   <div class="container ">
-    <!-- <div class="container-fluid text-center"> -->
-
-     
-
-
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
         <div class="mb-3 fw-bold ">
 
           <div class="mb-3 fs-5 text-center">
             PLANILLA DE ESTUDIANTES GENERAL
-          </div>          
-
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="mb-3">
-        <!-- <div class="d-flex justify-content-around ">         -->
         <div class="mb-3 d-grid gap-2 d-md-block">
-
-          <!-- <button class="btn btn-outline-success col-2">
-          <i class="fa-solid fa-table"></i> <router-link to="/estudiante/curso-preparatorio" class="nav-link active"
-            >ESTUDIANTES-PREPARATORIO</router-link>
-        </button> &nbsp; -->
-
           <button class="btn btn-success  float-end">
             <router-link to="/estudiante/create" class="nav-link active"><i class="fa-solid fa-user-plus"></i>NUEVO
               ESTUDIANTE</router-link>
@@ -41,10 +23,6 @@
           <button class="btn btn-warning rounded   me-1" @click="editarSeleccionado()">
             <i class="fa-solid fa-user-plus"></i>Editar
           </button>
-          <!-- <button class="btn btn-outline-danger  rounded col-md-1  col-lg-1  me-1" @click="eliminarSeleccionado()">
-            Eliminar
-            <i class="fa-solid fa-trash"></i>
-          </button> -->
           <button class="btn btn-success me-1" @click="historialAvanceGeneral">
             <i class="fa-solid fa-user-graduate"></i>HistorialAG.
           </button>
@@ -57,21 +35,13 @@
           <button class="btn btn-success" @click="certificadoCalificaciones">
             <i class="fa-solid fa-sheet-plastic"></i>Cert.Calificaciones
           </button>
-          <!-- <router-link :to="{ path: '/estudiante/HistorialAnual/' + estudiante.ci_estudiante }"
-                    class="btn btn-outline-success" >
-                    <i class="fa-solid fa-book"></i>
-                  </router-link> -->
-          <!-- <button class="btn btn-outline-success" @click="certificadoCalificaciones(estudiante.ci_estudiante)">
-          <i class="fa-solid fa-sheet-plastic"></i>
-        </button> -->
 
         </div>
       </div>
     </div>
     <div class="row">
-      <!-- <div class=" col-lg-12 col-sm-12 offset-lg-2 align-center"> -->
-      <!-- <div class="col-lg-12 col-sm-12 align-center"> -->
       <div class="table-responsive">
+        <!-- Configuracion para el Uso de Datatable de Un Estudiante -->
         <DataTable ref="table" id="datatable" :data="estudiantes" :columns="columns" v-if="estudiantes"
           class="table table-bordered table-striped display small" :options="{
             select: true, responsive: true, autoWidth: true, dom: 'Bfrtip',
@@ -80,7 +50,7 @@
               text: 'Edit',
               name: 'edit'
             }], pageLength: 5,
-            //responsivePriority: 1,                                                   
+
             columnDefs: [{
               width: '40%', target: [6],
               width: '10%', target: [7],
@@ -102,19 +72,12 @@
               <th class="col">
                 #
               </th>
-              <!-- <th class="d-none d-sm-block pb-4 col"> -->
               <th>
                 C.I.
               </th>
               <th class="col-2">
                 NOMBRE COMPLETO
               </th>
-              <!-- <th>
-                  APELLIDO-P.
-                </th>
-                <th class="col">
-                  APELLIDO-M.
-                </th> -->
               <th class="col-3">
                 CARRERA
               </th>
@@ -136,12 +99,6 @@
               <th class="col-2">
                 OBS.2
               </th>
-              <!-- <th class="col-1">
-                        OBS.1
-                      </th>
-                      <th class="col-1">
-                        OBS.2
-                      </th>                       -->
               <th class="col-1">
                 ESTADO
               </th>
@@ -150,38 +107,7 @@
               </th>
             </tr>
           </thead>
-          <!-- <div v-else>
-            <img src="loading.gif" alt="iamgen">
-          </div> -->
-
           <tbody id="contenido">
-
-            <!-- <td class="d-flex justify-content-center">
-                <div class="d-flex mb-1 ">
-                  <router-link :to="{ path: '/estudiante/materias-cursadas/' + estudiante.ci_estudiante }"
-                    class="btn btn-outline-secondary me-1">
-                    <i class="fa-solid fa-user-graduate"></i>
-                  </router-link>
-                  <button class="btn btn-outline-success" @click="formularioA(estudiante.ci_estudiante)">
-                    <i class="fa-regular fa-clipboard"></i>
-                  </button>
-                </div>
-                <div class="d-flex">
-                  <router-link :to="{ path: '/estudiante/edit/' + estudiante.ci_estudiante }"
-                    class="btn btn-outline-warning me-1">
-                    <i class="fa-solid fa-edit"></i>
-                  </router-link>
-                  <button class="btn btn-outline-success" @click="certificadoCalificaciones(estudiante.ci_estudiante)">
-                    <i class="fa-solid fa-sheet-plastic"></i>
-                  </button> -->
-            <!-- <button class="btn btn-outline-danger" @click="eliminar(estudiante.ci_estudiante, estudiante.nombres)">
-            <i class="fa-solid fa-trash"></i>
-          </button> -->
-            <!--           
-                </div>
-              </td> -->
-
-
           </tbody>
         </DataTable>
         <div v-else>
@@ -195,29 +121,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="d-flex mb-1 ">
-                  <router-link :to="{ path: '/estudiante/materias-cursadas/' + estudiante.ci_estudiante }"
-                    class="btn btn-outline-success" 
-                    >                    
-                    <i class="fa-solid fa-user-graduate"></i>
-                  </router-link> &nbsp;
-
-                  <button class="btn btn-outline-success" @click="formularioA(estudiante.ci_estudiante)" >                   
-                    <i class="fa-regular fa-clipboard"></i>
-                  </button>                                                      
-                </div>
-                <div class="d-flex">
-                  <router-link :to="{ path: '/estudiante/edit/' + estudiante.ci_estudiante }" class="btn btn-outline-warning"  
-                    >                    
-                    <i class="fa-solid fa-edit"></i>
-                  </router-link> &nbsp;
-                  <button class="btn btn-outline-danger" @click="eliminar(estudiante.ci_estudiante, estudiante.nombres)" >
-                    
-                    
-                    <i class="fa-solid fa-trash"></i>
-                  </button>                  
-                </div>                -->
-
     </div>
   </div>
 </template>
@@ -228,30 +131,23 @@ import { ref } from 'vue';
 import axios from "axios";
 import { confirmar1, show_alerta } from '../../funciones';
 import { historialAcademico } from '../../reportes'
+
+//librerias para la importacion de pdf
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 
+//librerias para el uso de Datatables
 import DataTable from 'datatables.net-vue3';
 import DataTableLib from 'datatables.net-bs5';
 import Select from "datatables.net-select";
 import 'datatables.net-responsive-bs5';
-//import 'datatables.net-select';
 
 DataTable.use(DataTableLib);
 DataTable.use(Select);
 
-
-
-//import { ref } from 'vue';
-// const provincias = computed(()=>{
-//         return this.provincias = this.getProvincias()
-// })
-//const provincias = ref([]);
-//const contador =ref(0);
-//import { Tooltip } from 'bootstrap'
-//let BASE_URL = process.env.VUE_APP_BASE_URL;
-//let BASE_URL = 'http://127.0.0.1:8000';
+//definicion de variable global para el consumo de servicios API-REST
 let BASE_URL = import.meta.env.VITE_BASE_URL;
+//deficion de variables globales para el uso en el reporte pdf
 let MINISTERIO = import.meta.env.VITE_MINISTERIO;
 let LOGO_UNI = import.meta.env.VITE_LOGO_UNI;
 export default {
@@ -267,17 +163,13 @@ export default {
         numero_archivo: '',
         materias_cursadas: {}
       },
+      //columnas del Datatable
       columns: [
         {
           data: null, render: function (data, type, row, meta) { return `${meta.row + 1}` }
         },
         { data: 'ci_estudiante' },
         { data: null, render: function (data) { return `${data.apellidoP} ${data.apellidoM} ${data.nombres}` } },
-        //{ data: `${data.nombres} ${data.apellidoP} ${data.apellidoM}` },
-
-        //{ data: 'apellidoP' },
-        //{ data: 'apellidoM' },
-        //{data:'celular'},
         { data: 'nombre_carrera' },
         { data: 'tipo_ingreso' },
         { data: 'anio_ingreso' },
@@ -288,19 +180,6 @@ export default {
 
         { data: 'estado' },
         { data: 'inscrito_gestion' },
-        //{
-        //data: 'ci_estudiante',
-        // render:function(data){
-        //   return `<button   data-id=${data} class="btn btn-danger" id="edit" @click="eliminar(${data.ci_estudiante},${data.nombres})">
-        //                         <i class="fa-solid fa-trash"></i>
-        //           </button> &nbsp;
-        //           <router-link data-id=${data} :to="{path:'/estudiante/edit/'+ci_estudiante}" class="btn btn-warning">
-        //                         <i class="fa-solid fa-edit"></i>
-        //                     </router-link>
-
-        //           `
-        // }
-        //},
       ]
     }
   },
@@ -312,14 +191,11 @@ export default {
     }
   },
   mounted() {
+    //lista de Estudiantes General
     this.getEstudiantes();
-    //this.BASE_URL=process.env.VUE_APP_BASE_URL;
-    //this.getMateriasCursadas();
+
     //ruta de navegacion despues de la accion eliminar
     this.principal = '/estudiantes';
-    // new Tooltip(document.body, {
-    //   selector: "[data-bs-toggle='tooltip']",
-    // })
   },
   methods: {
     verificarSeleccion() {
@@ -328,10 +204,7 @@ export default {
       let nombres = '';
 
       this.table.dt.rows({ selected: true }).every(function () {
-        //TODO ESTO FUNCIONA MUY BIEN, EXCELENTE
         const row = this.data();
-        console.log(row);
-        // console.log(datos.indexOf(this.data()));
         let idx = datos.indexOf(this.data());
         nombres = `${datos[idx].nombres} ${datos[idx].apellidoP} ${datos[idx].apellidoM}`;
         let clave = datos[idx].ci_estudiante;
@@ -340,6 +213,7 @@ export default {
       });
       return { identificador, nombres };
     },
+    //metodo para editar la informacion del Estudiante
     async editarSeleccionado() {
       const { identificador } = this.verificarSeleccion();
       if (identificador) {
@@ -349,20 +223,20 @@ export default {
         show_alerta(error, 'info')
       }
     },
+    //metodo para eliminar la informacion del Estudiante
     eliminarSeleccionado() {
       const { identificador, nombres } = this.verificarSeleccion();
       if (identificador) {
         const ruta = 'estudiantes/estudiantes/' + identificador + '/';
         confirmar1(identificador, nombres, ruta, this.principal);
-        //this.$router.push('/estudiante/edit/'+identificador+'/');
       } else {
         const error = 'Debes Seleccionar Un Estudiante!';
         show_alerta(error, 'info')
       }
     },
+    //metodo para ir a la vista del Perfil del Estudiante
     perfilEstudiante() {
       const { identificador } = this.verificarSeleccion();
-      //console.log(identificador);
       if (identificador) {
         this.$router.push('/perfil-estudiante/' + identificador);
       } else {
@@ -370,9 +244,9 @@ export default {
         show_alerta(error, 'info')
       }
     },
+    //metodo para ir a la vista del Historial de Avance General
     historialAvanceGeneral() {
       const { identificador } = this.verificarSeleccion();
-      console.log(identificador);
       if (identificador) {
         this.$router.push('/estudiante/historial-avance-general/' + identificador);
       } else {
@@ -380,9 +254,9 @@ export default {
         show_alerta(error, 'info')
       }
     },
+    //metodo para ir a la vista de Historial Académico
     materiasCursadas() {
       const { identificador } = this.verificarSeleccion();
-      console.log(identificador);
       if (identificador) {
         this.$router.push('/estudiante/materias-cursadas/' + identificador);
       } else {
@@ -391,6 +265,7 @@ export default {
       }
     },
 
+    //metodo para obtener el reporte de Formulario de Admisión
     async formularioA() {
       const { identificador } = this.verificarSeleccion();
       if (identificador) {
@@ -398,41 +273,22 @@ export default {
         await axios.get(url)
           .then(
             response => {
-              //const datos_estudiante=response.data['datos_estudiante'];
               this.datos_estudiantes = response.data;
-              //console.log(this.datos_estudiante.requisitos[0].requisito);
-              //console.log(this.datos_estudiante);
-              this.exportPDF(this.datos_estudiantes);
+
+              this.generarformularioAdmision(this.datos_estudiantes);
             }
           ).catch(error => {
             console.log(error)
             show_alerta(error, 'error')
           });
 
-      }else {
+      } else {
         const error = 'Debes Seleccionar Un Estudiante!';
         show_alerta(error, 'info')
       }
     },
-    //version anterior
-    // async formularioA(id) {
-    //   const url = BASE_URL + '/estudiantes/formularioAdmision/' + id + '/';
-    //   await axios.get(url)
-    //     .then(
-    //       response => {
-    //         //const datos_estudiante=response.data['datos_estudiante'];
-    //         this.datos_estudiantes = response.data;
-    //         //console.log(this.datos_estudiante.requisitos[0].requisito);
-    //         //console.log(this.datos_estudiante);
-    //         this.exportPDF(this.datos_estudiantes);
-    //       }
-    //     ).catch(error => {
-    //       console.log(error)
-    //       show_alerta(error, 'error')
-    //     });
-    // },
-    //async certificadoCalificaciones(id) {
-      async certificadoCalificaciones() {
+    //metodo para obtener el Certificado de Calificaciones por Gestión Académica
+    async certificadoCalificaciones() {
       const { identificador } = this.verificarSeleccion();
       console.log(identificador);
       if (identificador) {
@@ -442,39 +298,8 @@ export default {
         show_alerta(error, 'info')
       }
     },
-    //VERSION ANTERIOR
-    // async certificadoCalificaciones() {
-    //   const { identificador } = this.verificarSeleccion();
-    //   if (identificador) {
-    //     const url = BASE_URL + '/estudiantes/obtenerCertificacionGestionAnterior/' + identificador + '/';
-    //     await axios.get(url)
-    //       .then(
-    //         response => {
-    //           //const datos_estudiante=response.data['datos_estudiante'];
-    //           this.materias_cursadas = response.data;
-    //           //console.log(this.datos_estudiante.requisitos[0].requisito);
-    //           //console.log(this.datos_estudiante);
-    //           console.log(this.materias_cursadas.estudiante);
-    //           const datos = this.materias_cursadas;
-    //           const datos_estudiante = datos.estudiante;
-    //           const grado = datos.grado;
-    //           const fecha_emision = datos.fecha_emision;
-    //           const otros_datos = datos.datos;
-    //           if (!response.data.message) {
-    //             historialAcademico(datos_estudiante, grado, fecha_emision, otros_datos);
-    //           } else {
-    //             show_alerta('El estudiante no curso la gestión anterior(2023)', 'error')
-    //           }
-
-    //         }
-    //       ).catch(error => {
-    //         console.log(error)
-    //         show_alerta(error, 'error')
-    //       });
-    //   }
-    // },
+    //metodo para obtener la lista general de Estudiantes 
     async getEstudiantes() {
-      //await axios.get('http://127.0.0.1:8000/estudiantes/estudiantes/')
       await axios.get(BASE_URL + '/estudiantes/estudiantes/')
         .then(
           response => (
@@ -484,63 +309,22 @@ export default {
           console.log(error)
           show_alerta(error, 'error')
         });
-      console.log(this.estudiantes);
-      //console.log(this.estudiantes);
-      //console.log('AS'+BASE_URL);
     }, eliminar(id, nombre) {
-      //   for (let index = 0; index < 10; index++) {
-      //     sendRequest('POST',{
-      //     "id":999,
-      //     "nombre_provincia": "TEST-PROVINCIAS",
-      //     "id_departamento": null
-      // },'http://127.0.0.1:8000/parametros/provincias/','ProvinciaS Eliminada');              
-      //   }
       const ruta = 'estudiantes/estudiantes/' + id + '/';
       confirmar1(id, nombre, ruta, this.principal);
-      //this.$router.push('/estudiantes')    
     },
-    getCarrera(id) {
-      //axios.get('http://127.0.0.1:8000/parametros/carreras/' + id + '/')
-      axios.get(BASE_URL + '/parametros/carreras/' + id + '/')
-        .then(
-          response => (
-            this.carreras[id] = response.data['nombre_carrera']
-          )
-        );
-      return this.carreras[id]
-    }, getMateriasCursadas(id) {
+    getMateriasCursadas(id) {
       axios.get(BASE_URL + '/estudiantes/obtenerAsignaturasCursadas/' + id + '/')
         .then(
           response => {
 
             if (!response.data.message) {
-              //console.log('psando normal');
-              //this.message = response.data.message,
               this.materias_cursadas = response.data
 
-              // this.ci_estudiante = response.data['estudiante']['ci_estudiante'],
-              // this.nombres = response.data['estudiante']['nombres'],
-              // this.apellidoP = response.data['estudiante']['apellidoP'],
-              // this.apellidoM = response.data['estudiante']['apellidoM'],
-              // this.numero_registro = response.data['estudiante']['numero_registro'],
-              // this.nombre_carrera = response.data['estudiante']['nombre_carrera'],
-
-              // this.fecha_emision = response.data['fecha_emision'],
-
-              // this.materias = this.sortGestion(response.data['datos'])
-
-
-
-
-
-              //this.materias = response.data['datos']
             } else {
               this.message = response.data.message
-              console.log('aki esta el error' + response.data.message);
             }
 
-
-            console.log(response.data);
           }
         ).catch(error => {
           console.log(error)
@@ -548,11 +332,7 @@ export default {
         });
     },
     formatDate(cadena) {
-      console.log('ss' + cadena + 'esto');
-      // const date = new Date(cadena);  
-      // return new Intl.DateTimeFormat('es-BO').format(date).toString();
       if (cadena !== '' && cadena !== null && cadena !== 'undefined' && cadena !== ' ') {
-        console.log('entro?');
         let fecha = '';
         const datos = cadena.split('-');
         fecha = datos[2] + '/' + datos[1] + '/' + datos[0];
@@ -565,162 +345,40 @@ export default {
           return -1;
         }
       });
-      console.log(data);
       return data;
     },
-    certificadoCalificacioness(ci_estudiante) {
-      //console.log(this.getMateriasCursadas(ci_estudiante));
-      this.getMateriasCursadas(ci_estudiante);
-      const datos_estudiante = this.materias_cursadas;
-      //console.log(this.materias_cursadas);
-      historialAcademico(datos_estudiante);
-    },
-    async exportPDF(datos_estudiante) {
-      //first try
-      //parameters:orientation,unit,format
-      // const doc = new jsPDF('p', 'pt', 'A4');
-
-
-      //   let pdfName = 'test';                     
-      //   doc.text(`Hello Students:
-
-      //     ${this.estudiantes[0].nombre_carrera}                   
-
-      //     `, 10, 100);
-      //   doc.save(pdfName + '.pdf');
-
-      //second try
-      //const doc = new jsPDF({unit: 'px'});
+    async generarformularioAdmision(datos_estudiante) {
+      //inicializacion de parametros para el reporte pdf
       const doc = new jsPDF({ orientation: 'p', unit: 'px', format: 'letter' });
-      //const doc = new jsPDF('l','px,','letter');
+
       doc.setFontSize(12);
-      //let setY=15;
 
-      // this.estudiantes.forEach(element => {
-      //   doc.text(`
-      //     ${element.nombres}                                         
-      //     `, 10, setY);
-      //     setY+=15;
-      // });
-
-      //EJEMPLO QUE ESTA AL FINAL DE COMO PASAR LOS HEADERS Y BODY
-      //const headers = [['Name', 'Email', 'Country']];
-      //const headers1 = [['Nro','nombres', 'apellidoP', 'apellidoM','celular','nombre_carrera','estado']];  // 注意有兩層[]
-      // const body = [
-      //     ['David', 'david@example.com', 'Sweden'],
-      //     ['Castille', 'castille@example.com', 'Spain']
-      // ]
-
-      //SEGUNDA FORMA CON EL RELLENADO DE UN FORMATO SOLICITADO ATRAVES DE ESTRUCTURAS DE DATOS, LA PRIMERA A TRAVES DE UN TAG HTML
-      // const resultado = [];
-      // const encabezado = [];
-
-      // for (var i = 0; i < this.estudiantes.length; i += 1) {
-      //   console.log(this.estudiantes[i]);
-      //   //resultado.push(this.estudiantes[i])
-      //    if(i==0)
-      //    {
-      //      encabezado.push({nombres:`${this.estudiantes[i].apellidoP} ${this.estudiantes[i].apellidoM} ${this.estudiantes[i].nombres} `,ci_estudiante:this.estudiantes[i].ci_estudiante,
-      //                      nombre_carrera:this.estudiantes[i].nombre_carrera});
-      //       console.log(encabezado);
-      //    }
-      //   resultado.push([i+1,this.estudiantes[i].nombres,this.estudiantes[i].apellidoP,this.estudiantes[i].apellidoM,this.estudiantes[i].celular,
-      //   this.estudiantes[i].nombre_carrera,this.estudiantes[i].estado])
-      //result.push(Object.assign({}, data));
-      // }
-
-      //UNNECESARY PIECE OF CODE 
-      // let otro=[];
-      //   this.estudiantes.forEach(element => {
-      //     let jsonsito = {
-      //       nombre:element.nombres,
-      //       apellidoP:element.apellidoP,
-      //       apellidoM:element.apellidoM
-      //     }
-      //     otro.push(jsonsito);
-
-      //   doc.text(`
-      //     ${element.nombres}                                         
-      //     `, 10, setY);
-      //     setY+=15;
-      // });
-
-
-      //numero de pagina
-      //  const pageNumber=3;
-      //  for (let i = 0; i < pageNumber; i++) {
-      //     doc.setPage(i);
-      //     let pageCurrent = doc.internal.getCurrentPageInfo().pageNumber; //現在這頁
-      //     doc.setFontSize(12); //設定字體大小(optional)
-      //     doc.text(
-      //       `${pageCurrent} / ${pageNumber}`,
-      //       190,
-      //       doc.internal.pageSize.height - 10,
-      //       {align: 'left'}
-      //     );
-      //   } 
-
-      //<!--  -->
-      //RELLENADO DE FORMA INICIAL()
-      //RELLENADO DE DATOS DEL ESTUDIANTE:
-      //INICIO PRIMERA FORMA
-
-
-
+      //cabeceras de columna de tabla de datos Formulario de Admision
       const headers = [['N°', 'REQUISITOS DE ADMISIÓN', 'CUMPLE']];
+
+      //lista de requisitos de Admision 
       let requirements = [];
       const requisitos = datos_estudiante.requisitos;
       for (let index = 0; index < requisitos.length; index++) {
         requirements.push([index + 1, requisitos[index].requisito])
       }
-      // doc.text(`
-      //   Primer comentario                                        
-      //    `, 10, setY);
 
       let finalY = doc.lastAutoTable.finalY || 10
 
-      //doc.addImage("https://picsum.photos/200", "JPEG", doc.internal.pageSize.width-80, finalY+20, 50, 50);
-
-      //await doc.addImage("../../logotipo-unibol-quechua.png", "PNG", doc.internal.pageSize.width-80, finalY+20, 50, 50);
-      //await doc.addImage("../../caracteristicas-bosques-tropicales.jpg", "JPG", 30, finalY+20, 50, 50);
-
-      //<!-- -->
-      //PRIMER EJEMPLO DE PRUEBA EXITOSO
-      // doc.text(`
-      //    HISTORIAL ACADEMICO DE AVANCE GENERAL                                                      
-      //    `, 20, finalY);
-      //                   //finalY+=25;    
-      //    finalY+=20;    
-      // //SETEAMOS EL TAMAÑO DE LETRA PARA COLOCAR LOS DATOS
-      // doc.setFontSize(10);
-      // doc.text(`                            
-      //    APELLIDOS Y NOMBRES: ${this.apellidoP} ${this.apellidoM} ${this.nombres}                                  
-      //    CEDULA DE IDENTIDAD: ${this.ci_estudiante}
-      //    NRO DE REGISTRO: ${this.numero_registro}
-      //    CARRERA: ${this.nombre_carrera}
-      //    FECHA DE EMISION: ${this.fecha_emision}
-      //    NIVEL DE FORMACION: ${this.grado}
-      //    `,80, finalY);
-      //    finalY+=35;     
-
-      //INICIANDO LOS ENCABEZADOS Y FORMATO DE PRESENTACION
-
-
+      //inicialización de las Imagenes del encabezado para el formulario de Admisión
       await doc.addImage(MINISTERIO, 'JPG', 15, finalY + 5, 60, 60);
       await doc.addImage(LOGO_UNI, 'PNG', doc.internal.pageSize.width - 65, finalY + 5, 50, 50);
 
-      // await doc.addImage("../../ministerio.jpg", "JPG", 15, finalY + 5, 60, 60);
-      // await doc.addImage("../../logotipo-unibol-quechua.png", "PNG", doc.internal.pageSize.width - 65, finalY + 5, 50, 50);
 
+      //setear el color de letra
       doc.setTextColor(10);
+      //setear el tamaño de letra
       doc.setFontSize(10).setFont(undefined, 'bold');
       doc.setTextColor(18, 73, 39);
       doc.text(`
                        UNIVERSIDAD INDÍGENA BOLIVIANA COMUNITARIA INTERCULTURAL PRODUCTIVA
                        UNIBOL QUECHUA "CASIMIRO HUANCA"
                        `, (doc.internal.pageSize.getWidth() / 2) - 20, finalY, null, null, "center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
       finalY += 20;
 
       doc.setTextColor(100);
@@ -729,8 +387,7 @@ export default {
                        Decreto Supremo N° 29664 de 2 de agosto de 2008 - Decreto Supremo N° 3079 del 8 de febrero 2017
                        R.M. 505/2013 - R.M. 1300/2018"
                        `, (doc.internal.pageSize.getWidth() / 2) - 20, finalY, null, null, "center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
+
       finalY += 20;
 
       doc.setTextColor(10);
@@ -738,8 +395,7 @@ export default {
       doc.text(`
                        Tukuy sunquwan yachayninchikta, ruwayninchikta, yuyayninchikta kallpachaspa sumaq kawsayman kutina                       
                        `, (doc.internal.pageSize.getWidth() / 2) - 5, finalY, null, null, "center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
+
       finalY += 15;
 
       doc.setTextColor(10);
@@ -747,8 +403,7 @@ export default {
       doc.text(`
                       FORMULARIO DE ADMISIÓN UNIBOL-QUECHUA
                       `, (doc.internal.pageSize.getWidth() / 2) - 40, finalY, null, null, "center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
+
       finalY += 10;
 
       doc.setTextColor(10);
@@ -756,8 +411,7 @@ export default {
       doc.text(`
                       GESTIÓN ${datos_estudiante.gestion}
                       `, (doc.internal.pageSize.getWidth() / 2) - 40, finalY, null, null, "center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
+
       finalY += 100;
 
       doc.setTextColor(10);
@@ -765,8 +419,7 @@ export default {
       doc.text(`
                       C.I.: ${datos_estudiante.datos_estudiante.ci_estudiante}
                       `, (doc.internal.pageSize.getWidth() / 2) + 120, finalY, null, null, "center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
+
       finalY += 10;
 
       doc.setTextColor(10);
@@ -774,8 +427,7 @@ export default {
       doc.text(`
                       DATOS PERSONALES
                       `, -30, finalY, null, null, "left");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
+
       finalY += 15;
 
       doc.setTextColor(10);
@@ -789,11 +441,7 @@ export default {
                        Correo Electrónico: 
                        Teléfono:
                        `, -20, finalY);
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
-      //finalY+=35; 
-      //SETEAMOS EL TAMAÑO DE LETRA PARA COLOCAR LOS DATOS
-      //doc.setFontSize(9);                       
+
       const estudiante1 = datos_estudiante.datos_estudiante;
       let estado = '';
       let genero = '';
@@ -801,6 +449,7 @@ export default {
       let celular = '';
       let nacimiento = '';
       let fecha_nac = '';
+      //validacion de parametros
       if (estudiante1.estado_civil) {
         estado = estudiante1.estado_civil.toUpperCase();
       } else {
@@ -842,8 +491,6 @@ export default {
                        ${celular}
                        `, (doc.internal.pageSize.getWidth() / 2) - 130, finalY);
 
-
-
       finalY += 75;
 
       doc.setTextColor(10);
@@ -851,8 +498,7 @@ export default {
       doc.text(`
                       DATOS DE ORGANIZACIÓN
                         `, -30, finalY, null, null, "left");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
+
       finalY += 15;
 
       doc.setTextColor(10);
@@ -868,6 +514,7 @@ export default {
       let regional = '';
       let comunidad = '';
       let idioma = '';
+      //validacion de parametros de organización social
       if (estudiante1.organizacion_matriz) {
         matriz = estudiante1.organizacion_matriz.toUpperCase();
       }
@@ -899,8 +546,7 @@ export default {
       doc.text(`
                       CARRERA DE INGRESO
                         `, -30, finalY, null, null, "left");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
+
       finalY += 20;
 
       doc.setTextColor(10);
@@ -908,15 +554,10 @@ export default {
       doc.text(`
                          ${estudiante1.nombre_carrera}
                         `, (doc.internal.pageSize.getWidth() / 2) - 20, finalY, null, null, "center");
-      //finalY+=25;    
-      //añadimos 20+50 por el tamaño de las imagenes
+
       finalY += 10;
 
-      //const requisitos= datos_estudiante.requisitos;
-
       autoTable(doc, {
-        //QUITANDO ESPACIO
-        //startY: finalY + 20,               
         startY: finalY + 10,
         head: headers,
         body: requirements,
@@ -935,12 +576,8 @@ export default {
           0: { cellWidth: 50, halign: 'center' },
           1: { cellWidth: 299, halign: 'center' },
           2: { cellWidth: 50, halign: 'center' },
-          // etc
         }
-        //columnStyles:{color}                                          
       });
-
-
 
       finalY = doc.lastAutoTable.finalY
       finalY += 10;
@@ -951,43 +588,18 @@ export default {
                     Arch: ${datos_estudiante.numero_archivo}              
                       `, -5, finalY);
 
-
-
-      //doc.addImage("https://picsum.photos/200", "JPEG", 15, finalY+20, 10, 10);
-
-      //const body = this.estudiantes;
-      //const body =otro;
-
-      //SEGUNDA FORMA FINALIZADA
-      // autoTable(doc, {
-      //   head: headers1,
-      //   body:resultado,
-      // });
-
-      //doc.table(1, 1, this.generateData(100), headers1, { autoSize: true });
-
+      //forma alternativa para la generacion de pdf
       //await doc.save(`${this.apellidoP} ${this.apellidoM} ${this.nombres}`);      
+
       await window.open(doc.output('bloburl'), '_blank');
 
-      //var doc = new jsPDF('p', 'pt', 'A4');
-      // margins = {
-      //     top: 80,
-      //     bottom: 60,
-      //     left: 40,
-      //     width: 522
-      // };                                                                                                     
     }
   }
 }
 </script>
 <style>
-/* body {
-    font-size: .875rem;
-    line-height: 1.25rem;
-} */
+/* estilos para el uso de Datatables */
 @import 'datatables.net-bs5';
-
-/*@import 'datatables.net-dt';*/
 @import 'datatables.net-responsive-dt';
 
 table.dtr-inline.collapsed>tbody>tr>td.dtr-control,
@@ -1004,10 +616,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before {
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
-table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before { 
+table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
   content: "+";
   background-color: #31b131;
   background-color: #74a2ff;
 }
-
 </style>

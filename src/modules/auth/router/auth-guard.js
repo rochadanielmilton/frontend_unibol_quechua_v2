@@ -1,12 +1,11 @@
 import store from "@/store"
 
+//Guard para definir si el Usuario tiene un idToken
+const isAuthenticatedGuard = async (to, from, next) => {
 
-const isAuthenticatedGuard = async(to,from,next) => {
-
-    const {ok} = await store.dispatch('auth/checkAuthentication')
-    console.log('sto:'+ok);
-    if(ok) next()
-    else next({name:'login'})
+    const { ok } = await store.dispatch('auth/checkAuthentication')
+    if (ok) next()
+    else next({ name: 'login' })
 }
 
 export default isAuthenticatedGuard

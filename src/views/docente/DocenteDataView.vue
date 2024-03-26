@@ -110,7 +110,7 @@ import { ref } from 'vue';
 import axios from "axios";
 import { confirmar1, show_alerta } from '../../funciones';
 
-
+//librerias para el uso de Datatable
 import DataTable from 'datatables.net-vue3';
 import DataTableLib from 'datatables.net-bs5';
 import Select from "datatables.net-select";
@@ -119,10 +119,11 @@ import 'datatables.net-responsive-bs5';
 DataTable.use(DataTableLib);
 DataTable.use(Select);
 
+//definicion de variable global para el consumo de servicios API-REST
 let BASE_URL = import.meta.env.VITE_BASE_URL;
 export default {
   components: { DataTable },
-  name: 'DocenteView',
+  name: 'DocenteDataView',
   data() {
     return {
       docentes: null,
@@ -151,6 +152,7 @@ export default {
     }
   },
   mounted() {
+    //obtencion de docentes
     this.getDocentes();
   },
   methods: {
@@ -163,6 +165,7 @@ export default {
         );
 
     },
+    //verificar que se haya seleccionado un docente para su edicion u eliminacion
     verificarSeleccion() {
       let datos = this.docentes;
       let identificador = '';

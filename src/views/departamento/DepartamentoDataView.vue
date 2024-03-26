@@ -85,6 +85,7 @@ import axios from "axios";
 import { confirmar1, show_alerta } from '../../funciones';
 import { ref } from 'vue';
 
+//importacion de librerias para el uso de Datatables
 import DataTable from 'datatables.net-vue3';
 import DataTableLib from 'datatables.net-bs5';
 import Select from "datatables.net-select";
@@ -93,9 +94,10 @@ import 'datatables.net-responsive-bs5';
 DataTable.use(DataTableLib);
 DataTable.use(Select);
 
+//defincion de variable global para el consumo de servicios API-REST
 let BASE_URL = import.meta.env.VITE_BASE_URL;
 export default {
-  name: 'MateriaView',
+  name: 'DepartamentoView',
   components: { DataTable },
   data() {
     return {
@@ -122,6 +124,7 @@ export default {
     this.principal = '/departamentos';
   },
   methods: {
+    //verificar que se haya seleccionado un Departamento
     verificarSeleccion() {
       let datos = this.departamentos;
       let identificador = '';
@@ -137,6 +140,7 @@ export default {
       });
       return { identificador, nombres };
     },
+    //edicion del Departamento Seleccionado
     async editarSeleccionado() {
       const { identificador } = this.verificarSeleccion();
       console.log(identificador);
@@ -147,6 +151,7 @@ export default {
         show_alerta(error, 'info')
       }
     },
+    //eliminacion del Departamento seleccionado
     eliminarSeleccionado() {
       const { identificador, nombres } = this.verificarSeleccion();
 
@@ -158,6 +163,7 @@ export default {
         show_alerta(error, 'info')
       }
     },
+    //obtener la lista de departamentos
     getDepartamentos() {
       axios.get(BASE_URL + '/parametros/departamentos/')
         .then(

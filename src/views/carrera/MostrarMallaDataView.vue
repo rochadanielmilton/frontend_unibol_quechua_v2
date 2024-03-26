@@ -105,11 +105,12 @@ import 'datatables.net-responsive-bs5';
 DataTable.use(DataTableLib);
 DataTable.use(Select);
 
+//definicion de variables globales para el uso en el reporte pdf
 let BASE_URL = import.meta.env.VITE_BASE_URL;
 let MINISTERIO = import.meta.env.VITE_MINISTERIO;
 let LOGO_UNI = import.meta.env.VITE_LOGO_UNI;
 export default {
-  name: 'MOstrarMallaCarreraView',
+  name: 'MostrarMallaCarreraView',
   components: { DataTable },
   data() {
     return {
@@ -140,15 +141,18 @@ export default {
   },
   mounted() {
     const route = useRoute();
+    //obtencion del codigo de Carrera
     this.id = route.params.id;
 
     this.url = this.url + '/' + this.id + '/';
+    //obtenemos la Malla Académica de acuerdo a la Carrera Seleccionada
     this.getMallaAcademica();
     this.name_career = this.nombre_carrera;
     //ruta de navegacion despues de la accion eliminar
     this.principal = '/estudiantes';
   },
   methods: {
+    //metodo para la obtencion del reporte Malla Académica
     async exportPDF() {
 
       const doc = new jsPDF({ unit: 'px' });
@@ -222,27 +226,7 @@ export default {
       console.log(data);
       return data;
     },
-    getMallaAcademicas() {
-      axios.get(this.url)
-        .then(
-          response => {
-            this.message = response.data.message,
-
-              this.codigo_carrera = response.data['codigo_carrera'],
-              this.nombre_carrera = response.data['nombre_carrera'],
-              this.codigo_asignatura = response.data['codigo_asignatura'],
-              this.nombre_asignatura = response.data['nombre_asignatura'],
-              this.descripcion = response.data['descripcion'],
-              this.estado = response.data['estado']
-
-          }
-        ).catch(error => {
-
-          show_alerta(this.message, 'error')
-          this.$router.push('/carreras')
-        });
-
-    }, eliminar(id, nombre) {
+    eliminar(id, nombre) {
       const ruta = 'estudiantes/estudiantes/' + id + '/';
       confirmar1(id, nombre, ruta, this.principal);
     },

@@ -80,10 +80,10 @@
 <script>
 // @ is an alias to /src
 import { show_alerta, sendRequest } from "../../funciones";
-//let BASE_URL=process.env.VUE_APP_BASE_URL;
+//definicion de variable global para el consumo de servicios API-REST
 let BASE_URL = import.meta.env.VITE_BASE_URL;
 export default {
-  name: 'CreateEstudianteView',
+  name: 'CreateDocenteView',
   data() {
     return {
       id: 0, nombres: '', apellidop: '', apellidom: '', ci: '', celular: 0, direccion: '', profesion: '', estado: '', principal: '', correo: '', numero_item: '',
@@ -95,6 +95,7 @@ export default {
   }
   , methods:
   {
+    //metodo para guardar un Nuevo Docente
     async guardar() {
 
       event.preventDefault();
