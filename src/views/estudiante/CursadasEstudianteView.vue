@@ -231,7 +231,7 @@ export default {
       SERIE "A"-3 
       `, (doc.internal.pageSize.getWidth() / 2) + 160, finalY, null, null, "center");
 
-      finalY += 10;
+      finalY += 15;
 
 
       doc.setTextColor(10);
@@ -255,18 +255,18 @@ export default {
                        ${this.grado}
                        `, (doc.internal.pageSize.getWidth() / 2) - 130, finalY);
 
-      finalY += 35;
+      finalY += 25;
 
       //inicio de Tabla de Datos, materias-cursadas(Historial Academico)
       autoTable(doc, {
-        startY: finalY + 20,
+        startY: finalY + 30,
         html: '#materias_cursadas',
         theme: 'plain',
         tableLineColor: [0, 0, 0], tableLineWidth: 0.2,
         styles: { fontSize: 6, halign: 'center' },
         bodyStyles: { lineWidth: 0.2, lineColor: [0, 0, 0] },
         margin: { left: 50, top: 105 },
-        padding: 2
+        padding: 3
       })
 
       finalY = doc.lastAutoTable.finalY
